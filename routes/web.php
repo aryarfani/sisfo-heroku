@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
+Route::get('/', 'DashboardController@index');
 Route::resource('/dashboard', 'DashboardController');
 Route::resource('/visi-misi', 'VisiMisiController');
 Route::resource('/sejarah-desa', 'SejarahDesaController');

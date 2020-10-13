@@ -206,14 +206,14 @@
                         </li> --}}
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/nomer-penting" aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
+                                <i class="mdi mdi-contacts"></i>
                                 <span class="hide-menu">Nomer Penting</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <div class="dropdown">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="mdi mdi-av-timer"></i>
+                                    <i class="mdi mdi-nature-people"></i>
                                     <span class="hide-menu">Potensi Desa</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -242,7 +242,7 @@
                         <li class="sidebar-item">
                             <div class="dropdown">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="mdi mdi-av-timer"></i>
+                                    <i class="mdi mdi-shopping"></i>
                                     <span class="hide-menu">Produk UKM</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
