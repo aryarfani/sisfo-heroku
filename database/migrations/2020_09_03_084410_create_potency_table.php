@@ -16,7 +16,6 @@ class CreatePotencyTable extends Migration
         Schema::create('potency', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->integer('potency_category_id');
-            $table->foreign('potency_category_id')->references('id')->on('potency_category');
             $table->string('title');
             $table->text('address');
             $table->string('image')->nullable();
