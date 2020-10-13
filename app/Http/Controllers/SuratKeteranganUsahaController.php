@@ -47,8 +47,8 @@ class SuratKeteranganUsahaController extends Controller
         $data = SuratKeteranganUsaha::find($id);
         // dd($data);
 
-        $pdf = PDF::loadView('surat\suratKeteranganUsaha', array('data' => $data));
-        return $pdf->download('surat\suratKeteranganUsaha.pdf');
+        $pdf = PDF::loadView('surat.suratKeteranganUsaha', array('data' => $data));
+        return $pdf->download('surat.suratKeteranganUsaha.pdf');
     }
 
     /**
