@@ -4,27 +4,28 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\SuratKeteranganUsaha;
+use App\SuratKeteranganTidakMampu;
 use Illuminate\Support\Facades\Auth;
 
-class SuratKeteranganUsahaController extends Controller
+class SuratKeteranganTidakMampuController extends Controller
 {
     public function index()
     {
-        $data = SuratKeteranganUsaha::all();
+        $data = SuratKeteranganTidakMampu::all();
         return response()->json($data);
     }
     public function store(Request $request)
     {
-        $suratDomisili = new SuratKeteranganUsaha;
-        $suratDomisili->jenis_surat = 'Surat Keterangan Usaha';
+        $suratDomisili = new SuratKeteranganTidakMampu;
+        $suratDomisili->jenis_surat = 'Surat Keterangan Tidak Mampu';
         $suratDomisili->user_id = Auth::guard('user')->user()->id;
         $suratDomisili->nama = $request->nama;
+        $suratDomisili->nik = $request->nik;
         $suratDomisili->jenis_kelamin = $request->jenis_kelamin;
         $suratDomisili->ttl = $request->ttl;
-        $suratDomisili->status = $request->status;
         $suratDomisili->alamat = $request->alamat;
-        $suratDomisili->nama_usaha = $request->nama_usaha;
+        $suratDomisili->agama = $request->agama;
+        $suratDomisili->pekerjaan = $request->pekerjaan;
         $suratDomisili->save();
         return response()->json($suratDomisili);
     }

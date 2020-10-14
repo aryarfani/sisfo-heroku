@@ -75,7 +75,8 @@ class BeritaController extends Controller
     public function show($id)
     {
         $berita = News::find($id);
-        return view('formEditDashboard', ['berita' => $berita]);
+        $beritaCategory = NewsCategory::pluck('name', 'id');
+        return view('formEditBerita', ['berita' => $berita, 'beritaCategory' => $beritaCategory]);
     }
 
     /**
@@ -86,7 +87,8 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $home = News::find($id);
-        return view('formEditDashboard', ['home' => $home]);
+        $beritaCategory = NewsCategory::pluck('name', 'id');
+        return view('formEditBerita', ['home' => $home]);
     }
 
     /**

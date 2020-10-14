@@ -16,6 +16,8 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('nomer-penting', 'Api\ImportantNumberController@index');
 
     // route surat
-    Route::post('surat-domisili', 'Api\SuratKeteranganUsahaController@store');
-    Route::get('surat', 'Api\SuratKeteranganUsahaController@index');
+    Route::post('surat-usaha', 'Api\SuratKeteranganUsahaController@store');
+    Route::post('surat-domisili', 'Api\SuratKeteranganDomisiliController@store');
+    Route::post('surat-tidak-mampu', 'Api\SuratKeteranganTidakMampuController@store');
+    Route::get('surat', 'Api\SuratController@index');
 });

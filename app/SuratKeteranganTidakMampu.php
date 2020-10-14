@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SuratKeteranganUsaha extends Model
+class SuratKeteranganTidakMampu extends Model
 {
-    protected $table = 'surat_keterangan_usaha';
+    protected $table = 'surat_keterangan_tidak_mampu';
     protected $guarded = [];
 
     public function user()

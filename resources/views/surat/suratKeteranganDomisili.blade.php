@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Surat Keterangan Usaha</title>
+    <title>Surat Keteranan Domisili</title>
     <style>
         .line-title {
             border: 0;
@@ -40,7 +40,7 @@
 
     <br>
     <div align="center">
-        <span style="font-weight: bold; text-decoration: underline; font-size: 14px">SURAT KETERANGAN USAHA</span> <br>
+        <span style="font-weight: bold; text-decoration: underline; font-size: 14px">SURAT KETERANGAN DOMISILI</span> <br>
         <span style="font-weight: bold; font-size: 14px">NOMOR: 475.6/ /Pem/2020</span>
     </div>
     <p>Yang bertanda tangan dibawah ini Kepala Desa Lirboyo Kediri Kecamatan Mojoroto Kota Kediri, menerangkan dengan sebenarnya :</p>
@@ -48,29 +48,49 @@
 
     <table border="0">
         <tr>
+            <td width="130">NIK</td>
+            <td width="10">:</td>
+            <td>{{ $data->nik }}</td>
+        </tr>
+        <tr>
             <td height="20" width="130">Nama </td>
             <td height="20" width="10">:</td>
             <td height="20">{{ $data->nama }}</td>
         </tr>
         <tr>
-            <td width="130">Jenis Kelamin </td>
-            <td width="10">:</td>
-            <td>{{ $data->jenis_kelamin == 1 ? "Laki - Laki" : "Perempuan" }}</td>
+            <td height="20" width="130">Jenis Kelamin </td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->jenis_kelamin == 1 ? "Laki - Laki" : "Perempuan" }}</td>
         </tr>
         <tr>
-            <td width="130">Tempat, Tanggal Lahir </td>
-            <td width="10">:</td>
-            <td>{{ $data->ttl }}</td>
+            <td height="20" width="130">Tempat, Tanggal Lahir </td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->ttl }}</td>
         </tr>
         <tr>
-            <td width="130">Status</td>
-            <td width="10">:</td>
-            <td>{{ $data->status }}</td>
+            <td height="20" width="130">Agama</td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->status }}</td>
         </tr>
         <tr>
-            <td width="130">Alamat</td>
-            <td width="10">:</td>
-            <td>{{ $data->alamat }}</td>
+            <td height="20" width="130">Status</td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->status }}</td>
+        </tr>
+        <tr>
+            <td height="20" width="130">Pekerjaan</td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->pekerjaan }}</td>
+        </tr>
+        <tr>
+            <td height="20" width="130">Kewarganegaraan</td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->kewarganegaraan }}</td>
+        </tr>
+        <tr>
+            <td height="20" width="130">Alamat</td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->alamat }}</td>
         </tr>
         <tr>
             <td height="50"></td>
@@ -78,11 +98,11 @@
     </table>
 
     <div style="line-height: 1;">
-        Nama tersebut adalah benar penduduk kami yang mempunyai usaha :
+        Bahwa nama diatas adalah benar - benar warga kami yang berdomisili di Desa Lirboyo.
         <br><br>
         <p style="font-weight: bold; text-align: center; text-decoration: underline; font-size: 14px">{{ $data->nama_usaha }}</p>
         <br>
-        Demikian surat keterangan ini dibuat agar diunakan sebagai mana mestinya
+        Demikian surat keterangan domisili ini dibuat untuk dapat dipergunakan sebagaimana mestinya.
     </div>
 
     <br>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Surat Keterangan Usaha</title>
+    <title>Surat Keterangan Tidak Mampu</title>
     <style>
         .line-title {
             border: 0;
@@ -40,7 +40,7 @@
 
     <br>
     <div align="center">
-        <span style="font-weight: bold; text-decoration: underline; font-size: 14px">SURAT KETERANGAN USAHA</span> <br>
+        <span style="font-weight: bold; text-decoration: underline; font-size: 14px">SURAT KETERANGAN TIDAK MAMPU</span> <br>
         <span style="font-weight: bold; font-size: 14px">NOMOR: 475.6/ /Pem/2020</span>
     </div>
     <p>Yang bertanda tangan dibawah ini Kepala Desa Lirboyo Kediri Kecamatan Mojoroto Kota Kediri, menerangkan dengan sebenarnya :</p>
@@ -53,6 +53,11 @@
             <td height="20">{{ $data->nama }}</td>
         </tr>
         <tr>
+            <td height="20" width="130">NIK </td>
+            <td height="20" width="10">:</td>
+            <td height="20">{{ $data->nik }}</td>
+        </tr>
+        <tr>
             <td width="130">Jenis Kelamin </td>
             <td width="10">:</td>
             <td>{{ $data->jenis_kelamin == 1 ? "Laki - Laki" : "Perempuan" }}</td>
@@ -63,12 +68,17 @@
             <td>{{ $data->ttl }}</td>
         </tr>
         <tr>
-            <td width="130">Status</td>
+            <td width="130">Agama</td>
             <td width="10">:</td>
-            <td>{{ $data->status }}</td>
+            <td>{{ $data->agama }}</td>
         </tr>
         <tr>
-            <td width="130">Alamat</td>
+            <td width="130">Pekerjaan</td>
+            <td width="10">:</td>
+            <td>{{ $data->pekerjaan }}</td>
+        </tr>
+        <tr>
+            <td width="130">Alamat </td>
             <td width="10">:</td>
             <td>{{ $data->alamat }}</td>
         </tr>
@@ -77,12 +87,12 @@
         </tr>
     </table>
 
-    <div style="line-height: 1;">
-        Nama tersebut adalah benar penduduk kami yang mempunyai usaha :
-        <br><br>
-        <p style="font-weight: bold; text-align: center; text-decoration: underline; font-size: 14px">{{ $data->nama_usaha }}</p>
+    <div style="line-height: 1.4">
+        Benar bahwa yang tersebut namanya diatas penduduk Desa Lirboyo, Kecamatan Mojoroto dan keluarga yang bersangkutan
+        benar - benar <b>tergolong keluarga miskin / tidak mampu.</b>
         <br>
-        Demikian surat keterangan ini dibuat agar diunakan sebagai mana mestinya
+        Demikian surat keterangan tidak mampu ini dibuat dengan sebenarnya dan untuk di pergunakan sebgaimana mestinya dan kepada
+        pihak yang bersangkutan harap maklum adanya.
     </div>
 
     <br>
