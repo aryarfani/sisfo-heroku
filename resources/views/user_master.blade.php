@@ -211,6 +211,12 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/user" aria-expanded="false">
+                                <i class="mdi mdi-account"></i>
+                                <span class="hide-menu">User</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <div class="dropdown">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
                                     <i class="mdi mdi-nature-people"></i>

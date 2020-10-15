@@ -44,4 +44,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    // mengubah format tanggal
+    public function getCreatedAtAttribute()
+    {
+        return \Carbon\Carbon::parse($this->attributes['created_at'])
+            ->isoFormat('Do MMMM YYYY, h:mm');
+    }
 }
