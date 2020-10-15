@@ -29,8 +29,8 @@ class SuratKeteranganTidakMampuController extends Controller
     public function show($id)
     {
         $data = SuratKeteranganTidakMampu::find($id);
-        $pdf = PDF::loadView('surat.SuratKeteranganTidakMampu', array('data' => $data));
-        return $pdf->download('surat.SuratKeteranganTidakMampu.pdf');
+        $pdf = PDF::loadView('surat.suratKeteranganTidakMampu', array('data' => $data));
+        return $pdf->download('surat.suratKeteranganTidakMampu.pdf');
     }
 
     // function to finish surat

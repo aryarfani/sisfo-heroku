@@ -46,8 +46,8 @@ class SuratKeteranganDomisiliController extends Controller
     public function show($id)
     {
         $data = SuratKeteranganDomisili::find($id);
-        $pdf = PDF::loadView('surat.SuratKeteranganDomisili', array('data' => $data));
-        return $pdf->download('surat.SuratKeteranganDomisili.pdf');
+        $pdf = PDF::loadView('surat.suratKeteranganDomisili', array('data' => $data));
+        return $pdf->download('surat.suratKeteranganDomisili.pdf');
     }
 
     // function to finish surat
