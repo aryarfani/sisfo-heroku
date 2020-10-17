@@ -26,6 +26,8 @@ class CreateSuratKeteranganTidakMampuTable extends Migration
             $table->string('pekerjaan');
             $table->string('alamat');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

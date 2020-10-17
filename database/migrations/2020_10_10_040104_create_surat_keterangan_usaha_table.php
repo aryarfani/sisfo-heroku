@@ -25,6 +25,8 @@ class CreateSuratKeteranganUsahaTable extends Migration
             $table->string('alamat');
             $table->string('nama_usaha');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

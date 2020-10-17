@@ -14,12 +14,14 @@ class CreatePotencyTable extends Migration
     public function up()
     {
         Schema::create('potency', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
-            $table->integer('potency_category_id');
+            $table->id();
+            $table->unsignedBigInteger('potency_category_id');
             $table->string('title');
             $table->text('address');
             $table->string('image')->nullable();
             $table->timestamps();
+
+            $table->foreign('potency_category_id')->references('id')->on('potency_category')->onDelete('cascade');
         });
     }
 

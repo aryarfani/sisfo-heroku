@@ -28,6 +28,8 @@ class CreateSuratKeteranganDomisiliTable extends Migration
             $table->string('pekerjaan');
             $table->string('kewarganegaraan');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

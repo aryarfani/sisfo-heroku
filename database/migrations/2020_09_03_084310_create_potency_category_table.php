@@ -14,7 +14,7 @@ class CreatePotencyCategoryTable extends Migration
     public function up()
     {
         Schema::create('potency_category', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->id();
             $table->string('name');
             $table->timestamps();
         });
