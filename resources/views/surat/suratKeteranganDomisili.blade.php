@@ -70,7 +70,7 @@
         <tr>
             <td height="20" width="130">Agama</td>
             <td height="20" width="10">:</td>
-            <td height="20">{{ $data->status }}</td>
+            <td height="20">{{ $data->agama }}</td>
         </tr>
         <tr>
             <td height="20" width="130">Status</td>

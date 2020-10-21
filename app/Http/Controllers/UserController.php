@@ -37,22 +37,33 @@ class UserController extends Controller
     public function store(Request $request)
     {
         if ($request->method() == "POST") {
+
             $this->validate($request, [
-                'username' => 'required',
-                'nik' => 'required',
+                'nik' => 'required|numeric',
+                'nama' => 'required',
+                'pekerjaan' => 'required',
+                'agama' => 'required',
+                'alamat' => 'required',
+                'status' => 'required',
+                'jenis_kelamin' => 'required',
+                'gambar' => 'required',
                 'password' => 'required',
             ]);
-
             $user = new User;
             $user->nik = $request->nik;
-            $user->username = $request->username;
+            $user->nama = $request->nama;
+            $user->pekerjaan = $request->pekerjaan;
+            $user->agama = $request->agama;
+            $user->alamat = $request->alamat;
+            $user->status = $request->status;
+            $user->jenis_kelamin = $request->jenis_kelamin;
             $user->password = bcrypt($request->password);
 
-            if (isset($request->image)) {
+            if (isset($request->gambar)) {
                 $directory = 'assets/images/home';
-                $file = $request->file('image');
+                $file = $request->file('gambar');
                 $file->move($directory, $file->getClientOriginalName());
-                $user->image = $directory . "/" . $file->getClientOriginalName();
+                $user->gambar = $directory . "/" . $file->getClientOriginalName();
             }
 
             $user->save();

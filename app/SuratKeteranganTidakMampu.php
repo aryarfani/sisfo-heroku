@@ -18,6 +18,6 @@ class SuratKeteranganTidakMampu extends Model
     public function getCreatedAtAttribute()
     {
         return \Carbon\Carbon::parse($this->attributes['created_at'])
-            ->isoFormat('Do MMMM YYYY, h:mm');
+            ->isoFormat('Do MMMM YYYY, HH:mm');
     }
 }

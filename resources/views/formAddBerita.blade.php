@@ -8,22 +8,18 @@
                 <h4 class="card-title text-center">Add New</h4>
             </div>
             <div class="card card-body">
-                <form class="form-horizontal m-t-30" action="{{url('/berita')}}" method="POST" enctype="multipart/form-data">
+                <form class="form-horizontal m-t-30" action="{{ url('/berita') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <select name="news_category" id="news_category" class="form-control">
                         <option value="">== Pilih Kategori Berita ==</option>
-                        @foreach ($beritaCategory as $id => $name)
-                        <option value="{{ $id }}">{{ $name }}</option>
+                        @foreach($beritaCategory as $id => $name)
+                            <option value="{{ $id }}">{{ $name }}</option>
                         @endforeach
                     </select>
                     <div class="form-group">
                         <label>Title</label>
                         <input type="text" class="form-control" name="title">
                     </div>
-                    {{--                    <div class="form-group">----}}
-                    {{--                        <label>Author</label>--}}
-                    {{--                        <input type="text" class="form-control" name="author">--}}
-                    {{--                    </div>--}}
 
                     <div class="form-group">
                         <label>Isi Berita</label>

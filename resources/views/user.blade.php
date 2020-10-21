@@ -34,8 +34,9 @@
         <thead class="table-info">
             <tr>
                 <th scope="col">No</th>
+                <th scope="col">Image</th>
                 <th scope="col">NIK</th>
-                <th scope="col">Username</th>
+                <th scope="col">Nama</th>
                 <th scope="col">Tanggal dibuat</th>
                 <th scope="col">Action</th>
             </tr>
@@ -44,8 +45,9 @@
             @foreach($user as $b )
                 <tr>
                     <th scope="row">{{ $loop->index+1 }}</th>
+                    <td style="width: 200px;"><img src="{{ $b->gambar }}" style="width: 100px; height: 100px; object-fit: cover "></td>
                     <td>{{ $b->nik }}</td>
-                    <td>{{ $b->username }}</td>
+                    <td>{{ $b->nama }}</td>
                     <td>{{ $b->created_at }}</td>
                     <td>
                         <a href="{{ url('/user', [$b->id]) }}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a>

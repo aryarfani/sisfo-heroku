@@ -20,4 +20,12 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::post('surat-domisili', 'Api\SuratKeteranganDomisiliController@store');
     Route::post('surat-tidak-mampu', 'Api\SuratKeteranganTidakMampuController@store');
     Route::get('surat', 'Api\SuratController@index');
+
+    // route kegiatan
+    Route::post('kegiatan', 'Api\KegiatanController@store');
+    Route::get('kegiatan', 'Api\KegiatanController@index');
+
+    //route getAllUser
+    Route::get('data-agama', 'Api\GrafikController@getAgama');
+    Route::get('data-gender', 'Api\GrafikController@getGender');
 });

@@ -14,16 +14,34 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required',
             'nik' => 'required',
+            'nama' => 'required',
+            'gambar' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'agama' => 'required',
+            'status' => 'required',
+            'pekerjaan' => 'required',
             'password' => 'required',
         ]);
 
-        $user = User::create([
-            'username' => $request->username,
-            'nik' => $request->nik,
-            'password' => bcrypt($request->password),
-        ]);
+        $user = new User;
+        $user->nik = $request->nik;
+        $user->nama = $request->nama;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+        $user->alamat = $request->alamat;
+        $user->agama = $request->agama;
+        $user->status = $request->status;
+        $user->pekerjaan = $request->pekerjaan;
+        $user->password = bcrypt($request->password);
+
+        if (isset($request->gambar)) {
+            $directory = 'assets/images/home';
+            $file = $request->file('gambar');
+            $file->move($directory, $file->getClientOriginalName());
+            $user->gambar = $directory . "/" . $file->getClientOriginalName();
+        }
+        $user->save();
 
 
         return response()->json($user);
@@ -31,7 +49,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only(['username', 'password']);
+        $credentials = $request->only(['nik', 'password']);
 
         if (!$token = Auth::guard('user')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
