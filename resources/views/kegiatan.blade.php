@@ -13,7 +13,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#">Surat</a>
+                            <a href="#">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
                     </ol>
@@ -29,34 +29,35 @@
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
-    {{-- <a href="{{ action('SuratKeteranganDomisiliController@create') }}" type="button" class="btn btn-success mb-3"><i class="mdi mdi-plus-circle"></i> Add New</a> --}}
+    {{-- <a href="{{ action('UserController@create') }}" type="button" class="btn btn-success mb-3"><i class="mdi mdi-plus-circle"></i> Add New</a> --}}
     <table class="table table-hover table-striped table-bordered">
         <thead class="table-info">
             <tr>
                 <th scope="col">No</th>
-                <th scope="col">Pengirim</th>
-                <th scope="col">Jenis Surat</th>
-                <th scope="col">Tanggal Pembuatan</th>
-                <th scope="col">Status</th>
-                <th scope="col">Aksi</th>
+                <th scope="col">Gambar</th>
+                <th scope="col">Pengunggah</th>
+                <th scope="col">Nama kegiatan</th>
+                <th scope="col">Tempat kegiatan</th>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach($data as $b )
-
                 <tr>
                     <th scope="row">{{ $loop->index+1 }}</th>
-                    <td>{{ $b["user"]["nama"] }}</td>
-                    <td>{{ $b["jenis_surat"] }}</td>
-                    <td>{{ $b["created_at"] }}</td>
-                    <td>{!! $b["status_surat"] == "0" ? '<span class="badge badge-info font-weight-bold">DIPROSES</span>': '<span class="font-weight-bold badge badge-success">SELESAI</span>' !!}</td>
+                    <td style="width: 200px;"><img src="{{ $b->gambar }}" style="width: 170px;  object-fit: cover "></td>
+                    <td>{{ $b->user->nama }}</td>
+                    <td>{{ $b->nama }}</td>
+                    <td>{{ $b->tempat }}</td>
+                    <td>{{ $b->created_at }}</td>
                     <td>
-                        @if($b["status_surat"] == "0")
-                            <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]).'/finish' }}" type="button" class="btn btn-success btn-block mb-2"><i class="mdi mdi-print"></i>Selesai</a>
-
-                        @endif
-
-                        <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]) }}" type="button" class="btn btn-primary btn-block mb-2"><i class="mdi mdi-print"></i>Print</a>
+                        {{-- <a href="{{ url('/kegiatan', [$b->id]) }}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a> --}}
+                        <form action="{{ url('/kegiatan', [$b->id]) }}" method="POST">
+                            <input class="btn btn-danger btn-block" type="submit" value="Delete">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </form>
                     </td>
                 </tr>
             @endforeach

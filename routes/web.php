@@ -30,6 +30,7 @@ Route::resource('/potensi', 'PotencyController');
 Route::resource('/potensi-kategori', 'PotencyCategoryController');
 Route::resource('/nomer-penting', 'ImportantNumberController');
 Route::resource('/user', 'UserController');
+Route::resource('/kegiatan', 'KegiatanController');
 
 Route::get('/surat-keterangan-domisili/{id}/finish', 'SuratKeteranganDomisiliController@finish');
 Route::get('/surat-keterangan-usaha/{id}/finish', 'SuratKeteranganUsahaController@finish');
