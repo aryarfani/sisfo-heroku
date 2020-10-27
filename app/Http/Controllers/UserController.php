@@ -79,9 +79,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $data = User::find($id);
+        return view('formEditUser', ['data' => $data]);
     }
 
     /**
@@ -90,9 +91,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $data = User::find($id);
+        return view('formEditUser', ['data' => $data]);
     }
 
     /**
@@ -102,9 +104,37 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nik' => 'required|numeric',
+            'nama' => 'required',
+            'pekerjaan' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'status' => 'required',
+            'jenis_kelamin' => 'required',
+        ]);
+        $user = User::find($id);
+        $user->nik = $request->nik;
+        $user->nama = $request->nama;
+        $user->pekerjaan = $request->pekerjaan;
+        $user->agama = $request->agama;
+        $user->alamat = $request->alamat;
+        $user->status = $request->status;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+
+        // cek if password is changed
+        if (empty($request->new_password)) {
+            $user->password = $request->password;
+        } else {
+            $user->password = bcrypt($request->new_password);
+        }
+
+        $user->gambar = $request->gambar;
+
+        $user->save();
+        return redirect('/user');
     }
 
     /**
@@ -116,6 +146,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        unlink($user->gambar);
         $hapus = $user->delete();
         if ($hapus) {
             return redirect('/user');

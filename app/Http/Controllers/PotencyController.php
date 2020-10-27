@@ -41,6 +41,12 @@ class PotencyController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'address' => 'required',
+            'image' => 'required',
+            'potency_category_id' => 'required',
+        ]);
         if ($request->method() == "POST") {
             $directory = 'assets/images/home';
             $file = $request->file('image');
@@ -64,9 +70,11 @@ class PotencyController extends Controller
      * @param  \App\Potency  $potency
      * @return \Illuminate\Http\Response
      */
-    public function show(Potency $potency)
+    public function show($id)
     {
-        //
+        $data = Potency::find($id);
+        $potencyCategory = PotencyCategory::pluck('name', 'id');
+        return view('formEditPotency', ['potencyCategory' => $potencyCategory, 'data' => $data]);
     }
 
     /**
@@ -75,9 +83,11 @@ class PotencyController extends Controller
      * @param  \App\Potency  $potency
      * @return \Illuminate\Http\Response
      */
-    public function edit(Potency $potency)
+    public function edit($id)
     {
-        //
+        $data = Potency::find($id);
+        $potencyCategory = PotencyCategory::pluck('name', 'id');
+        return view('formEditPotency', ['potencyCategory' => $potencyCategory, 'data' => $data]);
     }
 
     /**
@@ -87,9 +97,22 @@ class PotencyController extends Controller
      * @param  \App\Potency  $potency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Potency $potency)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'address' => 'required',
+            'image' => 'required',
+            'potency_category_id' => 'required',
+        ]);
+
+        $potency = Potency::find($id);
+        $potency->title = $request->title;
+        $potency->address = $request->address;
+        $potency->potency_category_id = $request->potency_category_id;
+        $potency->image = $request->image;
+        $potency->save();
+        return redirect('/potensi');
     }
 
     /**

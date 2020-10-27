@@ -101,6 +101,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        unlink($product->image);
+
         $hapus = $product->delete();
         if ($hapus) {
             return redirect('/produk');

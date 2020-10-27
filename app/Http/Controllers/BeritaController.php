@@ -8,21 +8,7 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    // /**
-    //  * Create a new controller instance.
-    //  *
-    //  * @return void
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-    //  */
 
-    /**
-     * Display a listing of the resource.
-     *
-     *
-     */
     public function index()
     {
         $berita = News::all();
@@ -76,6 +62,7 @@ class BeritaController extends Controller
     {
         $berita = News::find($id);
         $beritaCategory = NewsCategory::pluck('name', 'id');
+
         return view('formEditBerita', ['berita' => $berita, 'beritaCategory' => $beritaCategory]);
     }
 
@@ -86,9 +73,10 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        $home = News::find($id);
+        $berita = News::find($id);
         $beritaCategory = NewsCategory::pluck('name', 'id');
-        return view('formEditBerita', ['home' => $home]);
+
+        return view('formEditBerita', ['berita' => $berita, 'beritaCategory' => $beritaCategory]);
     }
 
     /**
@@ -122,8 +110,10 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        $home = News::find($id);
-        $hapus = $home->delete();
+        $data = News::find($id);
+        unlink($data->image);
+
+        $hapus = $data->delete();
         if ($hapus) {
             return redirect('/berita');
         }

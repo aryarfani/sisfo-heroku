@@ -35,6 +35,11 @@ class ImportantNumberController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+        ]);
         if ($request->method() == "POST") {
 
             $importantNumber = new ImportantNumber;
@@ -56,6 +61,8 @@ class ImportantNumberController extends Controller
      */
     public function show($id)
     {
+        $data = ImportantNumber::find($id);
+        return view('formEditImportantNumber', ['data' => $data]);
     }
 
     /**
@@ -65,8 +72,8 @@ class ImportantNumberController extends Controller
      */
     public function edit($id)
     {
-        $importantNumber = ImportantNumber::find($id);
-        return view('formEditImportantNumber', ['importantNumber' => $importantNumber]);
+        $data = ImportantNumber::find($id);
+        return view('formEditImportantNumber', ['data' => $data]);
     }
 
     /**
@@ -77,8 +84,16 @@ class ImportantNumberController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+        ]);
+
         $importantNumber = ImportantNumber::find($id);
         $importantNumber->name = $request->name;
+        $importantNumber->address = $request->address;
+        $importantNumber->phone = $request->phone;
         $importantNumber->save();
         return redirect('/nomer-penting');
     }

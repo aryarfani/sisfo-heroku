@@ -12,14 +12,14 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('admins')->delete();
-        
-        \DB::table('admins')->insert(array (
-            0 => 
-            array (
-                'id' => 2,
+
+        \DB::table('admins')->insert(array(
+            0 =>
+            array(
+                'id' => 1,
                 'name' => 'Rifqi',
                 'email' => 'rifqi@gmail.com',
                 'email_verified_at' => NULL,
@@ -29,7 +29,5 @@ class AdminsTableSeeder extends Seeder
                 'updated_at' => '2020-10-13 05:36:28',
             ),
         ));
-        
-        
     }
 }

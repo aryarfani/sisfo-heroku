@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'nik' => '5511',
-                'nama' => 'Rudi Hartanto',
+                'nama' => 'Rudi Hartanti',
                 'gambar' => 'assets/images/home/2.jpg',
                 'jenis_kelamin' => '1',
                 'alamat' => 'Jl. Raung Kediri',
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
                 'pekerjaan' => 'PNS',
                 'password' => '$2y$10$G2qpN.jD9gmU381wOAkCfOO.HOac1EW5l1sHA2kGzldifdASQhLcG',
                 'created_at' => '2020-10-21 09:55:12',
-                'updated_at' => '2020-10-21 09:55:12',
+                'updated_at' => '2020-10-27 11:44:58',
             ),
             1 => 
             array (
@@ -106,6 +106,21 @@ class UsersTableSeeder extends Seeder
                 'password' => '$2y$10$2qu.dhMqNKcwycpwwoCYOeuOz3Kaikm/aabxA0gX20vP54TS5F3L2',
                 'created_at' => '2020-10-22 12:53:05',
                 'updated_at' => '2020-10-22 12:53:05',
+            ),
+            6 => 
+            array (
+                'id' => 8,
+                'nik' => '5534',
+                'nama' => 'Kartono',
+                'gambar' => 'assets/images/home/images.jpg',
+                'jenis_kelamin' => '1',
+                'alamat' => 'Badas, kediri',
+                'agama' => 'Hindu',
+                'status' => 'Kawin',
+                'pekerjaan' => 'PNS',
+                'password' => '$2y$10$GyUbArPnVPIom0cJq71Tieg2y2mWuKNWh5uRPEq4wXt07W3hSyxby',
+                'created_at' => '2020-10-27 11:47:49',
+                'updated_at' => '2020-10-27 11:47:49',
             ),
         ));
         
