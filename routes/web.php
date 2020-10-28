@@ -16,12 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'DashboardController@index');
-Route::resource('/dashboard', 'DashboardController');
-Route::resource('/visi-misi', 'VisiMisiController');
-Route::resource('/sejarah-desa', 'SejarahDesaController');
-Route::resource('/staff-kategori', 'StaffCategoryController');
-Route::resource('/staff', 'StaffController');
+Route::get('/', 'SuratController@index');
+
 Route::resource('/berita', 'BeritaController');
 Route::resource('/berita-kategori', 'BeritaCategoryController');
 Route::resource('/produk', 'ProductController');
@@ -31,6 +27,9 @@ Route::resource('/potensi-kategori', 'PotencyCategoryController');
 Route::resource('/nomer-penting', 'ImportantNumberController');
 Route::resource('/user', 'UserController');
 Route::resource('/kegiatan', 'KegiatanController');
+
+Route::resource('/ojek', 'OjekController');
+Route::resource('/pasar', 'PasarController');
 
 Route::get('/surat-keterangan-domisili/{id}/finish', 'SuratKeteranganDomisiliController@finish');
 Route::get('/surat-keterangan-usaha/{id}/finish', 'SuratKeteranganUsahaController@finish');

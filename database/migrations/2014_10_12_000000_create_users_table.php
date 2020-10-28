@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('agama');
             $table->string('status');
             $table->string('pekerjaan');
+            $table->string('nomer_hp');
             $table->string('password');
             $table->timestamps();
         });

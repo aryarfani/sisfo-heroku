@@ -21,6 +21,7 @@ class AuthController extends Controller
             'alamat' => 'required',
             'agama' => 'required',
             'status' => 'required',
+            'nomer_hp' => 'required',
             'pekerjaan' => 'required',
             'password' => 'required',
         ]);
@@ -32,6 +33,7 @@ class AuthController extends Controller
         $user->alamat = $request->alamat;
         $user->agama = $request->agama;
         $user->status = $request->status;
+        $user->nomer_hp = $request->nomer_hp;
         $user->pekerjaan = $request->pekerjaan;
         $user->password = bcrypt($request->password);
 

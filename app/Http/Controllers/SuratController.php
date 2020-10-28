@@ -8,17 +8,18 @@ use App\SuratKeteranganTidakMampu;
 
 class SuratController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $suratKeteranganDomisili = SuratKeteranganDomisili::with('user')->get();
         $suratKeteranganUsaha = SuratKeteranganUsaha::with('user')->get();
         $suratKeteranganTidakMampu = SuratKeteranganTidakMampu::with('user')->get();
 
-        // $data = $suratKeteranganDomisili->merge($suratKeteranganTidakMampu);
-
         $data = array_merge($suratKeteranganDomisili->toArray(),  $suratKeteranganTidakMampu->toArray());
         $data = array_merge($data, $suratKeteranganUsaha->toArray());
-        // dd($data);
 
         return view('surat', ['data' => $data]);
     }

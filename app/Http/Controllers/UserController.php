@@ -45,6 +45,7 @@ class UserController extends Controller
                 'agama' => 'required',
                 'alamat' => 'required',
                 'status' => 'required',
+                'nomer_hp' => 'required',
                 'jenis_kelamin' => 'required',
                 'gambar' => 'required',
                 'password' => 'required',
@@ -56,6 +57,7 @@ class UserController extends Controller
             $user->agama = $request->agama;
             $user->alamat = $request->alamat;
             $user->status = $request->status;
+            $user->nomer_hp = $request->nomer_hp;
             $user->jenis_kelamin = $request->jenis_kelamin;
             $user->password = bcrypt($request->password);
 
@@ -113,6 +115,7 @@ class UserController extends Controller
             'agama' => 'required',
             'alamat' => 'required',
             'status' => 'required',
+            'nomer_hp' => 'required',
             'jenis_kelamin' => 'required',
         ]);
         $user = User::find($id);
@@ -122,6 +125,7 @@ class UserController extends Controller
         $user->agama = $request->agama;
         $user->alamat = $request->alamat;
         $user->status = $request->status;
+        $user->nomer_hp = $request->nomer_hp;
         $user->jenis_kelamin = $request->jenis_kelamin;
 
         // cek if password is changed

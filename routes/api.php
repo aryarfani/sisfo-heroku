@@ -28,4 +28,14 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     //route getAllUser
     Route::get('data-agama', 'Api\GrafikController@getAgama');
     Route::get('data-gender', 'Api\GrafikController@getGender');
+
+    // route pasar
+    Route::post('pasar', 'Api\PasarController@store');
+    Route::delete('pasar/{id}/delete', 'Api\PasarController@destroy');
+    Route::get('pasar', 'Api\PasarController@index');
+    Route::get('pasar/user', 'Api\PasarController@indexUser');
+
+    // route ojek
+    Route::post('ojek', 'Api\OjekController@store');
+    Route::get('ojek', 'Api\OjekController@index');
 });

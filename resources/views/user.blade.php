@@ -37,6 +37,7 @@
                 <th scope="col">Image</th>
                 <th scope="col">NIK</th>
                 <th scope="col">Nama</th>
+                <th scope="col">No Handphone</th>
                 <th scope="col">Tanggal dibuat</th>
                 <th scope="col">Action</th>
             </tr>
@@ -48,6 +49,7 @@
                     <td style="width: 200px;"><img src="{{ $b->gambar }}" style="width: 100px; height: 100px; object-fit: cover "></td>
                     <td>{{ $b->nik }}</td>
                     <td>{{ $b->nama }}</td>
+                    <td>{{ $b->nomer_hp }}</td>
                     <td>{{ $b->created_at }}</td>
                     <td>
                         <a href="{{ url('/user', [$b->id]) }}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a>
