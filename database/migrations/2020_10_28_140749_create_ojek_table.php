@@ -16,7 +16,7 @@ class CreateOjekTable extends Migration
         Schema::create('ojek', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('plat_nomer');
+            $table->string('nomer_plat');
             $table->string('nomer_hp');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

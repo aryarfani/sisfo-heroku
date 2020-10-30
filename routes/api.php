@@ -38,4 +38,6 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     // route ojek
     Route::post('ojek', 'Api\OjekController@store');
     Route::get('ojek', 'Api\OjekController@index');
+    Route::delete('ojek/user/delete', 'Api\OjekController@destroy');
+    Route::get('ojek/user', 'Api\OjekController@indexUser');
 });

@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PotencyTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(KegiatanTableSeeder::class);
+        $this->call(PasarTableSeeder::class);
+        $this->call(OjekTableSeeder::class);
     }
 }

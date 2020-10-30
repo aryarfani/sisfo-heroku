@@ -45,7 +45,7 @@ class PasarController extends Controller
 
     public function destroy($id)
     {
-        $data = Pasar::find($id);
+        $data = Pasar::findOrFail($id);
         unlink($data->gambar);
         $hapus = $data->delete();
         if ($hapus) {
@@ -54,6 +54,7 @@ class PasarController extends Controller
         return response()->json('error', 400);
     }
 
+    // get the index only for logged user
     public function indexUser()
     {
         $data = Pasar::where('user_id', '=', Auth::guard('user')->user()->id)->get();
