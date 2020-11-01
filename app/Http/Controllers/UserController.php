@@ -149,9 +149,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        unlink($user->gambar);
-        $hapus = $user->delete();
+        $data = User::find($id);
+        if (file_exists($data->gambar)) {
+            unlink($data->gambar);
+        }
+        $hapus = $data->delete();
         if ($hapus) {
             return redirect('/user');
         }

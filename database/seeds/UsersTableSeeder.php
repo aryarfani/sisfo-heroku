@@ -121,7 +121,7 @@ class UsersTableSeeder extends Seeder
                 'gambar' => 'assets/images/home/images.jpg',
                 'jenis_kelamin' => '1',
                 'alamat' => 'Badas, kediri',
-                'agama' => 'Hindu',
+                'agama' => 'Budha',
                 'status' => 'Kawin',
                 'nomer_hp' => '089517268646',
                 'pekerjaan' => 'PNS',

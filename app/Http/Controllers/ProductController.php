@@ -49,7 +49,7 @@ class ProductController extends Controller
             $product = new Product;
             $product->name = $request->name;
             $product->address = $request->address;
-            $product->product_category = $request->product_category;
+            $product->product_category_id = $request->product_category_id;
             $product->image = $directory . "/" . $file->getClientOriginalName();
             $product->save();
             return redirect('/produk');
@@ -100,10 +100,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        unlink($product->image);
-
-        $hapus = $product->delete();
+        $data = Product::find($id);
+        if (file_exists($data->image)) {
+            unlink($data->image);
+        }
+        $hapus = $data->delete();
         if ($hapus) {
             return redirect('/produk');
         }

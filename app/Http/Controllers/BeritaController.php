@@ -111,7 +111,9 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         $data = News::find($id);
-        unlink($data->image);
+        if (file_exists($data->image)) {
+            unlink($data->image);
+        }
 
         $hapus = $data->delete();
         if ($hapus) {

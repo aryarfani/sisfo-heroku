@@ -29,6 +29,12 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('data-agama', 'Api\GrafikController@getAgama');
     Route::get('data-gender', 'Api\GrafikController@getGender');
 
+    // route jasa
+    Route::post('jasa', 'Api\JasaController@store');
+    Route::delete('jasa/{id}/delete', 'Api\JasaController@destroy');
+    Route::get('jasa', 'Api\JasaController@index');
+    Route::get('jasa/user', 'Api\JasaController@indexUser');
+
     // route pasar
     Route::post('pasar', 'Api\PasarController@store');
     Route::delete('pasar/{id}/delete', 'Api\PasarController@destroy');

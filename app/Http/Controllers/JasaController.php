@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Ojek;
+use App\Jasa;
 use Illuminate\Http\Request;
 
-class OjekController extends Controller
+class JasaController extends Controller
 {
     public function index()
     {
-        $data = Ojek::all();
-        return view('ojek', ['data' => $data]);
+
+        $data = Jasa::all();
+        return view('jasa', ['data' => $data]);
     }
 
     public function destroy($id)
     {
-        $data = Ojek::find($id);
+        $data = Jasa::find($id);
         if (file_exists($data->gambar)) {
             unlink($data->gambar);
         }
         $hapus = $data->delete();
         if ($hapus) {
-            return redirect('/ojek');
+            return redirect('/jasa');
         }
     }
 }

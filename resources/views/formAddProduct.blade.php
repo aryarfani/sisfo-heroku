@@ -8,12 +8,12 @@
                 <h4 class="card-title text-center">Add New</h4>
             </div>
             <div class="card card-body">
-                <form class="form-horizontal m-t-30" action="{{url('/produk')}}" method="POST" enctype="multipart/form-data">
+                <form class="form-horizontal m-t-30" action="{{ url('/produk') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <select name="product_category" id="product_category" class="form-control">
+                    <select name="product_category_id" class="form-control">
                         <option value="">== Pilih Kategori Produk ==</option>
-                        @foreach ($productCategory as $id => $name)
-                        <option value="{{ $id }}">{{ $name }}</option>
+                        @foreach($productCategory as $id => $name)
+                            <option value="{{ $id }}">{{ $name }}</option>
                         @endforeach
                     </select>
                     <div class="form-group">

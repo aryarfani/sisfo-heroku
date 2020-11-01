@@ -17,7 +17,9 @@ class PasarController extends Controller
     public function destroy($id)
     {
         $data = Pasar::find($id);
-        unlink($data->gambar);
+        if (file_exists($data->gambar)) {
+            unlink($data->gambar);
+        }
         $hapus = $data->delete();
         if ($hapus) {
             return redirect('/pasar');
