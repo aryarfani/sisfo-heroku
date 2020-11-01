@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <label>Nomer Hp (wa)</label>
-                        <input type="text" class="form-control" name="nomer_hp" value="{{ $data->alamat }}">
+                        <input type="text" class="form-control" name="nomer_hp" value="{{ $data->nomer_hp }}">
                     </div>
                     <div class="form-group">
                         <label>Status</label>
