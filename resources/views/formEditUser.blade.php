@@ -45,6 +45,10 @@
                         <input type="text" class="form-control" name="alamat" value="{{ $data->alamat }}">
                     </div>
                     <div class="form-group">
+                        <label>Nomer Hp (wa)</label>
+                        <input type="text" class="form-control" name="nomer_hp">
+                    </div>
+                    <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">
                             <option value="Belum Kawin" {{ $data->status == "Belum Kawin" ? 'selected' : '' }}>Belum Kawin</option>
