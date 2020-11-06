@@ -46,7 +46,9 @@ class JasaController extends Controller
     public function destroy($id)
     {
         $data = Jasa::findOrFail($id);
-        unlink($data->gambar);
+        if (file_exists($data->gambar)) {
+            unlink($data->gambar);
+        }
         $hapus = $data->delete();
         if ($hapus) {
             return response()->json();

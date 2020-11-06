@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'SuratController@index');
+Route::redirect('/', '/dashboard');
+Route::get('/dashboard', 'DashboardController@index');
 
 Route::resource('/berita', 'BeritaController');
 Route::resource('/berita-kategori', 'BeritaCategoryController');
@@ -30,6 +31,7 @@ Route::resource('/kegiatan', 'KegiatanController');
 
 Route::resource('/ojek', 'OjekController');
 Route::resource('/pasar', 'PasarController');
+
 
 Route::get('/surat-keterangan-domisili/{id}/finish', 'SuratKeteranganDomisiliController@finish');
 Route::get('/surat-keterangan-usaha/{id}/finish', 'SuratKeteranganUsahaController@finish');

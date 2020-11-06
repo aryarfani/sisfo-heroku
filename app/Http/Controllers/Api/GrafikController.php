@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class GrafikController extends Controller
 {
@@ -14,26 +15,32 @@ class GrafikController extends Controller
      */
     public function getAgama()
     {
-        // $user = User::all();
-        $islam = count(User::where('agama', '=', 'Islam')->get());
-        $kristen = count(User::where('agama', '=', 'Kristen')->get());
-        $katolik = count(User::where('agama', '=', 'Katolik')->get());
-        $hindu = count(User::where('agama', '=', 'Hindu')->get());
-        $budha = count(User::where('agama', '=', 'Budha')->get());
+        $users = User::all();
 
-        $sum = $islam + $kristen + $katolik + $hindu + $budha;
-        $islam = $islam / $sum * 100;
-        $kristen = $kristen / $sum * 100;
-        $katolik = $katolik / $sum * 100;
-        $hindu = $hindu / $sum * 100;
-        $budha = $budha / $sum * 100;
+        foreach ($users as $user) {
+            if (isset($user->agama)) {
+                $agama = $user->agama;
+                if (!isset($data[$agama])) {
+                    $data[$agama] = 0;
+                }
+                $data[$agama]++;
+            }
+        }
+        extract($data);
+
+        $sum = $Islam + $Kristen + $Katolik + $Hindu + $Budha;
+        $Islam = $Islam / $sum * 100;
+        $Kristen = $Kristen / $sum * 100;
+        $Katolik = $Katolik / $sum * 100;
+        $Hindu = $Hindu / $sum * 100;
+        $Budha = $Budha / $sum * 100;
 
         return response()->json([
-            'islam' => round($islam),
-            'kristen' => round($kristen),
-            'katolik' => round($katolik),
-            'hindu' => round($hindu),
-            'budha' => round($budha),
+            'islam' => round($Islam),
+            'kristen' => round($Kristen),
+            'katolik' => round($Katolik),
+            'hindu' => round($Hindu),
+            'budha' => round($Budha),
         ]);
     }
 

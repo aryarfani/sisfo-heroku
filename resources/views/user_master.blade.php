@@ -13,8 +13,9 @@
     <title>Nice admin Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
     <link href="/admin/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/admin/assets/login/css/custom.css">
     <!-- Custom CSS -->
-    <link href="/admin/dist/css/style.min.css" rel="stylesheet">
+    <link href="/admin/dist/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,7 +28,6 @@
             bottom: 0;
             width: 100%;
         }
-
     </style>
 </head>
 
@@ -59,7 +59,7 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
-                        <a href="/" class="logo">
+                        <a href="/dashboard" class="logo">
                             <!-- Logo icon -->
                             <b class="logo-icon">
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -96,25 +96,7 @@
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item search-box">
-                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
-                                <div class="d-flex align-items-center">
-                                    <i class="mdi mdi-magnify font-20 mr-1"></i>
-                                    <div class="ml-1 d-none d-sm-block">
-                                        <span>Search</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <form class="app-search position-absolute">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter">
-                                <a class="srh-btn">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </form>
-                        </li>
+
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
@@ -323,7 +305,7 @@
     <!--chartis chart-->
     <script src="/admin/assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="/admin/dist/js/pages/dashboards/dashboard1.js"></script>
+    @yield('javascript')
 </body>
 
 </html>
