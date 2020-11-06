@@ -76,11 +76,13 @@
                             <div class="agama mt-3"></div>
                         </div>
                         <!-- column -->
-                        <div class="col-5 ml-auto mt-5">
+                        <div class="col-5 ml-auto mt-2">
                             <ul class="list-style-none">
-                                <li><i class="fa fa-circle m-r-5 text-info font-12"></i> <span class="font-medium">60%</span> <span class="text-muted">open</span></li>
-                                <li class="m-t-20"><i class="fa fa-circle m-r-5 text-purple font-12"></i> <span class="font-medium">26%</span> <span class="text-muted">clicks</span></li>
-                                <li class="m-t-20"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">18%</span> <span class="text-muted">bounce</span></li>
+                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-info font-12"></i> <span class="font-medium"> {{ $dataAgama[0] }} %</span> <span class="text-muted">Islam</span></li>
+                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-purple font-12"></i> <span class="font-medium">{{ $dataAgama[1] }}%</span> <span class="text-muted">Kristen</span></li>
+                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataAgama[2] }}%</span> <span class="text-muted">Katolik</span></li>
+                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataAgama[3] }}%</span> <span class="text-muted">Hindu</span></li>
+                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataAgama[4] }}%</span> <span class="text-muted">Budha</span></li>
                             </ul>
                         </div>
                         <!-- column -->
@@ -101,9 +103,8 @@
                         <!-- column -->
                         <div class="col-5 ml-auto mt-5">
                             <ul class="list-style-none">
-                                <li><i class="fa fa-circle m-r-5 text-info font-12"></i> <span class="font-medium">60%</span> <span class="text-muted">open</span></li>
-                                <li class="m-t-20"><i class="fa fa-circle m-r-5 text-purple font-12"></i> <span class="font-medium">26%</span> <span class="text-muted">clicks</span></li>
-                                <li class="m-t-20"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">18%</span> <span class="text-muted">bounce</span></li>
+                                <li class="m-b-20"><i class="fa fa-circle m-r-5 text-purple font-12"></i> <span class="font-medium">{{ $dataGender[0] }}%</span> <span class="text-muted">Laki - Laki</span></li>
+                                <li class="m-b-20"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataGender[1] }}%</span> <span class="text-muted">Perempuan</span></li>
                             </ul>
                         </div>
                         <!-- column -->
@@ -122,7 +123,6 @@
     var dataGender = {!! json_encode($dataGender) !!};
     $(function () {
         "use strict";
-
 
         var dataChartAgama = {
             series: dataAgama

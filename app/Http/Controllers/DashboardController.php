@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Home;
 use App\User;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -29,11 +27,11 @@ class DashboardController extends Controller
         extract($data);
 
         $sum = $Islam + $Kristen + $Katolik + $Hindu + $Budha;
-        $Islam = $Islam / $sum * 100;
-        $Kristen = $Kristen / $sum * 100;
-        $Katolik = $Katolik / $sum * 100;
-        $Hindu = $Hindu / $sum * 100;
-        $Budha = $Budha / $sum * 100;
+        $Islam = round($Islam / $sum * 100);
+        $Kristen = round($Kristen / $sum * 100);
+        $Katolik = round($Katolik / $sum * 100);
+        $Hindu = round($Hindu / $sum * 100);
+        $Budha = round($Budha / $sum * 100);
 
         $dataAgama = [$Islam, $Kristen, $Katolik, $Hindu, $Budha];
 
@@ -41,8 +39,8 @@ class DashboardController extends Controller
         $femalePure = count(User::where('jenis_kelamin', '=', '0')->get());
 
         $sum = $malePure + $femalePure;
-        $male = $malePure / $sum * 100;
-        $female = $femalePure / $sum * 100;
+        $male = round($malePure / $sum * 100);
+        $female = round($femalePure / $sum * 100);
 
         $dataGender = [$male, $female];
 
