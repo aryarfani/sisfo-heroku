@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts/app')
 
 @section('content')
 <div class="limiter">
@@ -29,13 +29,13 @@
                     </span>
                 </div>
                 @if(count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn" type="submit">
@@ -44,9 +44,9 @@
                 </div>
 
                 @if(Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
+                <a class="btn btn-link" href="{{ route('password.request') }}">
+                    {{ __('Forgot Your Password?') }}
+                </a>
                 @endif
 
                 <div class="text-center p-t-136">
