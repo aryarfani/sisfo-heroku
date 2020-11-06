@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('../layouts/master')
 
 @section('content')
 <div class="container-fluid">
@@ -76,13 +76,13 @@
                             <div class="agama mt-3"></div>
                         </div>
                         <!-- column -->
-                        <div class="col-5 ml-auto mt-2">
+                        <div class="col-5 ml-auto mt-2 label-text">
                             <ul class="list-style-none">
-                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-info font-12"></i> <span class="font-medium"> {{ $dataAgama[0] }} %</span> <span class="text-muted">Islam</span></li>
-                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-purple font-12"></i> <span class="font-medium">{{ $dataAgama[1] }}%</span> <span class="text-muted">Kristen</span></li>
-                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataAgama[2] }}%</span> <span class="text-muted">Katolik</span></li>
-                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataAgama[3] }}%</span> <span class="text-muted">Hindu</span></li>
-                                <li class="m-b-10"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataAgama[4] }}%</span> <span class="text-muted">Budha</span></li>
+                                <li class="m-b-10"> <span class="label-color"></span> <span class="text-muted">Islam</span></li>
+                                <li class="m-b-10"> <span class="label-color"></span> <span class="text-muted">Kristen</span></li>
+                                <li class="m-b-10"> <span class="label-color"></span> <span class="text-muted">Katolik</span></li>
+                                <li class="m-b-10"> <span class="label-color"></span> <span class="text-muted">Hindu</span></li>
+                                <li class="m-b-10"> <span class="label-color"></span> <span class="text-muted">Budha</span></li>
                             </ul>
                         </div>
                         <!-- column -->
@@ -101,10 +101,10 @@
                             <div class="gender mt-3"></div>
                         </div>
                         <!-- column -->
-                        <div class="col-5 ml-auto mt-5">
+                        <div class="col-5 ml-auto mt-5 label-text">
                             <ul class="list-style-none">
-                                <li class="m-b-20"><i class="fa fa-circle m-r-5 text-purple font-12"></i> <span class="font-medium">{{ $dataGender[0] }}%</span> <span class="text-muted">Laki - Laki</span></li>
-                                <li class="m-b-20"><i class="fa fa-circle m-r-5 text-success font-12"></i> <span class="font-medium">{{ $dataGender[1] }}%</span> <span class="text-muted">Perempuan</span></li>
+                                <li class="m-b-10"> <span class="label-color"></span> <span class="text-muted">Laki - Laki</span></li>
+                                <li class="m-b-10"> <span class="label-color"></span> <span class="text-muted">Perempuan</span></li>
                             </ul>
                         </div>
                         <!-- column -->
@@ -143,7 +143,7 @@
                     return Math.round(value / dataChartAgama.series.reduce(sum) * 100) + '%';
                 },
                 donut: true,
-                donutWidth: 25,
+                donutWidth: 30,
             });
 
         var chart = Chartist.Pie(
@@ -153,7 +153,7 @@
                     return Math.round(value / dataChartGender.series.reduce(sum) * 100) + '%';
                 },
                 donut: true,
-                donutWidth: 25,
+                donutWidth: 30,
             });
 
         var chart = [chart];

@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('../layouts/master')
 
 @section('content')
 <!-- ============================================================== -->

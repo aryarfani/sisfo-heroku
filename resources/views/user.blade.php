@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('../layouts/master')
 
 @section('content')
 <!-- ============================================================== -->
@@ -44,22 +44,22 @@
         </thead>
         <tbody>
             @foreach($user as $b )
-                <tr>
-                    <th scope="row">{{ $loop->index+1 }}</th>
-                    <td style="width: 200px;"><img src="{{ $b->gambar }}" style="width: 100px; height: 100px; object-fit: cover "></td>
-                    <td>{{ $b->nik }}</td>
-                    <td>{{ $b->nama }}</td>
-                    <td>{{ $b->nomer_hp }}</td>
-                    <td>{{ $b->created_at }}</td>
-                    <td>
-                        <a href="{{ url('/user', [$b->id]) }}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a>
-                        <form action="{{ url('/user', [$b->id]) }}" method="POST">
-                            <input class="btn btn-danger btn-block" type="submit" value="Delete">
-                            <input type="hidden" name="_method" value="delete" />
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        </form>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="row">{{ $loop->index+1 }}</th>
+                <td style="width: 200px;"><img src="{{ $b->gambar }}" style="width: 100px; height: 100px; object-fit: cover "></td>
+                <td>{{ $b->nik }}</td>
+                <td>{{ $b->nama }}</td>
+                <td>{{ $b->nomer_hp }}</td>
+                <td>{{ $b->created_at }}</td>
+                <td>
+                    <a href="{{ url('/user', [$b->id]) }}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a>
+                    <form action="{{ url('/user', [$b->id]) }}" method="POST">
+                        <input class="btn btn-danger btn-block" type="submit" value="Delete">
+                        <input type="hidden" name="_method" value="delete" />
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>

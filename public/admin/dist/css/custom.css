@@ -1,0 +1,68 @@
+.ct-series-a .ct-bar,
+.ct-series-a .ct-line,
+.ct-series-a .ct-point,
+.ct-series-a .ct-slice-donut {
+    stroke: #0293ee;
+}
+
+.ct-series-b .ct-bar,
+.ct-series-b .ct-line,
+.ct-series-b .ct-point,
+.ct-series-b .ct-slice-donut {
+    stroke: #f8b250;
+}
+
+.ct-series-c .ct-bar,
+.ct-series-c .ct-line,
+.ct-series-c .ct-point,
+.ct-series-c .ct-slice-donut {
+    stroke: #845bef;
+}
+
+.ct-series-d .ct-bar,
+.ct-series-d .ct-line,
+.ct-series-d .ct-point,
+.ct-series-d .ct-slice-donut {
+    stroke: #13d38e;
+}
+
+.ct-series-e .ct-bar,
+.ct-series-e .ct-line,
+.ct-series-e .ct-point,
+.ct-series-e .ct-slice-donut {
+    stroke: #CF1F69;
+}
+
+.ct-label {
+    fill: white;
+}
+
+.label-color {
+    display: block;
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 5px 5px 0 0;
+    background: #FFFFFF;
+}
+
+
+.label-text ul :nth-child(1) .label-color {
+    background: #0293ee;
+}
+
+.label-text ul :nth-child(2) .label-color {
+    background: #f8b250;
+}
+
+.label-text ul :nth-child(3) .label-color {
+    background: #845bef;
+}
+
+.label-text ul :nth-child(4) .label-color {
+    background: #13d38e;
+}
+
+.label-text ul :nth-child(5) .label-color {
+    background: #CF1F69;
+}

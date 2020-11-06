@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('../layouts/master')
 
 @section('content')
 <div class="container-fluid">
@@ -13,7 +13,7 @@
                     <select name="product_category_id" class="form-control">
                         <option value="">== Pilih Kategori Produk ==</option>
                         @foreach($productCategory as $id => $name)
-                            <option value="{{ $id }}">{{ $name }}</option>
+                        <option value="{{ $id }}">{{ $name }}</option>
                         @endforeach
                     </select>
                     <div class="form-group">

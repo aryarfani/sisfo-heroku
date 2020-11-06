@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('../layouts/master')
 
 @section('content')
 <div class="container-fluid">
@@ -15,7 +15,7 @@
                     <select name="news_category" id="news_category" class="form-control">
                         <option value="">== Pilih Kategori Berita ==</option>
                         @foreach($beritaCategory as $id => $name)
-                            <option value="{{ $id }}">{{ $name }}</option>
+                        <option value="{{ $id }}">{{ $name }}</option>
                         @endforeach
                     </select>
                     <div class="form-group">

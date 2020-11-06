@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('../layouts/master')
 
 @section('content')
 <!-- ============================================================== -->
@@ -44,21 +44,21 @@
         <tbody>
             @foreach($data as $b )
 
-                <tr>
-                    <th scope="row">{{ $loop->index+1 }}</th>
-                    <td>{{ $b["user"]["nama"] }}</td>
-                    <td>{{ $b["jenis_surat"] }}</td>
-                    <td>{{ $b["created_at"] }}</td>
-                    <td>{!! $b["status_surat"] == "0" ? '<span class="badge badge-info font-weight-bold">DIPROSES</span>': '<span class="font-weight-bold badge badge-success">SELESAI</span>' !!}</td>
-                    <td>
-                        @if($b["status_surat"] == "0")
-                            <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]).'/finish' }}" type="button" class="btn btn-success btn-block mb-2"><i class="mdi mdi-print"></i>Selesai</a>
+            <tr>
+                <th scope="row">{{ $loop->index+1 }}</th>
+                <td>{{ $b["user"]["nama"] }}</td>
+                <td>{{ $b["jenis_surat"] }}</td>
+                <td>{{ $b["created_at"] }}</td>
+                <td>{!! $b["status_surat"] == "0" ? '<span class="badge badge-info font-weight-bold">DIPROSES</span>': '<span class="font-weight-bold badge badge-success">SELESAI</span>' !!}</td>
+                <td>
+                    @if($b["status_surat"] == "0")
+                    <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]).'/finish' }}" type="button" class="btn btn-success btn-block mb-2"><i class="mdi mdi-print"></i>Selesai</a>
 
-                        @endif
+                    @endif
 
-                        <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]) }}" type="button" class="btn btn-primary btn-block mb-2"><i class="mdi mdi-print"></i>Print</a>
-                    </td>
-                </tr>
+                    <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]) }}" type="button" class="btn btn-primary btn-block mb-2"><i class="mdi mdi-print"></i>Print</a>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>

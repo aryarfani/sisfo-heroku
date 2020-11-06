@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('../layouts/master')
 
 @section('content')
 <div class="container-fluid">
@@ -9,14 +9,14 @@
             </div>
 
             @if(count($errors) > 0)
-                <br>
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            <br>
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
             @endif
             <div class="card card-body">
                 <form class="form-horizontal m-t-30" action="{{ url('/potensi') }}" method="POST" enctype="multipart/form-data">
@@ -24,7 +24,7 @@
                     <select name="potency_category_id" id="potency_category_id" class="form-control">
                         <option value="">== Pilih Kategori Produk ==</option>
                         @foreach($potencyCategory as $id => $name)
-                            <option value="{{ $id }}">{{ $name }}</option>
+                        <option value="{{ $id }}">{{ $name }}</option>
                         @endforeach
                     </select>
                     <div class="form-group">
