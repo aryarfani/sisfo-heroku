@@ -146,6 +146,12 @@
                             </a>
                         </li> --}}
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard" aria-expanded="false">
+                                <i class="mdi mdi-av-timer"></i>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/surat" aria-expanded="false">
                                 <i class="mdi mdi-email"></i>
                                 <span class="hide-menu">Permintaan Surat</span>
@@ -216,23 +222,6 @@
                                 </div>
                             </div>
                         </li>
-                        {{-- <li class="sidebar-item">
-                            <div class="dropdown">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="mdi mdi-av-timer"></i>
-                                    <span class="hide-menu">Data Desa</span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Wilayah Administrasi</a>
-                                    <a class="dropdown-item" href="#">Pendidikan dalam KK</a>
-                                    <a class="dropdown-item" href="#">Pendidikan Ditempuh</a>
-                                    <a class="dropdown-item" href="#">Pekerjaan</a>
-                                    <a class="dropdown-item" href="#">Agama</a>
-                                    <a class="dropdown-item" href="#">Jenis Kelamin</a>
-                                    <a class="dropdown-item" href="#">Warga Negara</a>
-                                </div>
-                            </div>
-                        </li> --}}
                         <li class="sidebar-item">
                             <div class="dropdown">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
@@ -248,7 +237,7 @@
                         <li class="sidebar-item">
                             <div class="dropdown">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="mdi mdi-av-timer"></i>
+                                    <i class="mdi mdi-newspaper"></i>
                                     <span class="hide-menu">Berita</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
