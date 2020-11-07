@@ -29,7 +29,7 @@
                     </select>
                     <div class="form-group">
                         <label>Title</label>
-                        <input type="text" class="form-control" name="title" value="{{ $data->id }}">
+                        <input type="text" class="form-control" name="title" value="{{ $data->title }}">
                     </div>
                     <div class="form-group">
                         <label>Isi Berita</label>
