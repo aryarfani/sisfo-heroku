@@ -110,20 +110,7 @@ class PotencyController extends Controller
         $potency->title = $request->title;
         $potency->address = $request->address;
         $potency->potency_category_id = $request->potency_category_id;
-        // cek if image is changed
-        if (isset($request->new_image)) {
-            $directory = 'assets/images/home';
-            $file = $request->file('new_image');
-            $file->move($directory, $file->getClientOriginalName());
-            $potency->image = $directory . "/" . $file->getClientOriginalName();
-
-            // delete old picture
-            if (file_exists($request->image)) {
-                unlink($request->image);
-            }
-        } else {
-            $potency->image = $request->image;
-        }
+        $potency->image = $request->image;
         $potency->save();
         return redirect('/potensi');
     }

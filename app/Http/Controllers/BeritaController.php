@@ -33,11 +33,6 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'content' => 'required',
-            'image' => 'required',
-        ]);
         if ($request->method() == "POST") {
             $directory = 'assets/images/home';
             $file = $request->file('image');
@@ -65,10 +60,10 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        $data = News::find($id);
+        $berita = News::find($id);
         $beritaCategory = NewsCategory::pluck('name', 'id');
 
-        return view('formEditBerita', ['data' => $data, 'beritaCategory' => $beritaCategory]);
+        return view('formEditBerita', ['berita' => $berita, 'beritaCategory' => $beritaCategory]);
     }
 
     /**
@@ -78,10 +73,10 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        $data = News::find($id);
+        $berita = News::find($id);
         $beritaCategory = NewsCategory::pluck('name', 'id');
 
-        return view('formEditBerita', ['data' => $data, 'beritaCategory' => $beritaCategory]);
+        return view('formEditBerita', ['berita' => $berita, 'beritaCategory' => $beritaCategory]);
     }
 
     /**
@@ -92,32 +87,18 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'content' => 'required',
-            'image' => 'required',
-        ]);
-        $news = News::find($id);
-        $news->title = $request->title;
-        $news->author = auth()->user()->name;
-        $news->content = $request->content;
-        $news->visitor = 0;
+        //        dd($request);
+        $directory = 'assets/images/home';
+        $file = $request->file('image');
+        $file->move($directory, $file->getClientOriginalName());
 
-        // cek if image is changed
-        if (isset($request->new_image)) {
-            $directory = 'assets/images/home';
-            $file = $request->file('new_image');
-            $file->move($directory, $file->getClientOriginalName());
-            $news->image = $directory . "/" . $file->getClientOriginalName();
 
-            // delete old picture
-            if (file_exists($request->image)) {
-                unlink($request->image);
-            }
-        } else {
-            $news->image = $request->image;
-        }
-        $news->save();
+        $home = News::find($id);
+        $home->title = $request->title;
+        $home->author = auth()->user()->name;
+        $home->description = $request->description;
+        $home->image = $directory . "/" . $file->getClientOriginalName();
+        $home->save();
         return redirect('/berita');
     }
 

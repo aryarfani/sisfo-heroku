@@ -118,7 +118,6 @@ class UserController extends Controller
             'nomer_hp' => 'required',
             'jenis_kelamin' => 'required',
         ]);
-
         $user = User::find($id);
         $user->nik = $request->nik;
         $user->nama = $request->nama;
@@ -130,25 +129,14 @@ class UserController extends Controller
         $user->jenis_kelamin = $request->jenis_kelamin;
 
         // cek if password is changed
-        if (isset($request->new_password)) {
-            $user->password = bcrypt($request->new_password);
-        } else {
+        if (empty($request->new_password)) {
             $user->password = $request->password;
-        }
-        // cek if image is changed
-        if (isset($request->new_gambar)) {
-            $directory = 'assets/images/home';
-            $file = $request->file('new_gambar');
-            $file->move($directory, $file->getClientOriginalName());
-            $user->gambar = $directory . "/" . $file->getClientOriginalName();
-
-            // delete old picture
-            if (file_exists($request->gambar)) {
-                unlink($request->gambar);
-            }
         } else {
-            $user->gambar = $request->gambar;
+            $user->password = bcrypt($request->new_password);
         }
+
+        $user->gambar = $request->gambar;
+
         $user->save();
         return redirect('/user');
     }

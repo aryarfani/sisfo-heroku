@@ -35,10 +35,8 @@ class PotencyCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
         if ($request->method() == "POST") {
+
             $potencyCategory = new PotencyCategory;
             $potencyCategory->name = $request->name;
             $potencyCategory->save();
@@ -56,8 +54,6 @@ class PotencyCategoryController extends Controller
      */
     public function show($id)
     {
-        $data = PotencyCategory::find($id);
-        return view('formEditPotencyCategory', ['data' => $data]);
     }
 
     /**
@@ -67,8 +63,8 @@ class PotencyCategoryController extends Controller
      */
     public function edit($id)
     {
-        $data = PotencyCategory::find($id);
-        return view('formEditPotencyCategory', ['data' => $data]);
+        $potencyCategory = PotencyCategory::find($id);
+        return view('formEditPotencyCategory', ['potencyCategory' => $potencyCategory]);
     }
 
     /**
@@ -79,9 +75,6 @@ class PotencyCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
         $potencyCategory = PotencyCategory::find($id);
         $potencyCategory->name = $request->name;
         $potencyCategory->save();

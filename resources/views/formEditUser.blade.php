@@ -64,23 +64,21 @@
                             <option value="0" {{ $data->jenis_kelamin == "0" ? 'selected' : '' }}>Perempuan</option>
                         </select>
                     </div>
-                    <div class="alert alert-danger">
-                        Isi form di bawah ini hanya bila Anda hendak mengubah password atau gambar User
-                    </div>
-                    <input type="hidden" class="form-control" name="password" value="{{ $data->password }}">
-                    <input type="hidden" class="form-control" name="gambar" value="{{ $data->gambar }}">
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="text" class="form-control" name="new_password">
+                        <input type="text" class="form-control" name="new-password">
+                        <input type="hidden" class="form-control" name="password" value="{{ $data->password }}">
+                        <input type="hidden" class="form-control" name="gambar" value="{{ $data->gambar }}">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Upload Gambar</label><br>
-                        <input type="file" class="form-control" name="new_gambar">
-                    </div>
-                    <button type="submit" class="btn btn-warning"> Update </button>
-                </form>
-            </div>
+                        <img src="{{ "../".$data->gambar }}" style="width: 170px; object-fit: cover ">
+                    <input type="file" class="form-control" name="gambar" value="{{ $data->gambar }}">
+            </div> --}}
+            <button type="submit" class="btn btn-warning"> Update </button>
+            </form>
         </div>
     </div>
+</div>
 </div>
 @endsection

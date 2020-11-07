@@ -10,6 +10,7 @@
             <div class="card card-body">
                 <form class="form-horizontal m-t-30" action="{{ url('/potensi', [$data->id]) }}" method="POST" enctype="multipart/form-data">
                     {{ method_field('PUT') }}
+
                     @csrf
                     <select name="potency_category_id" id="potency_category_id" class="form-control">
                         <option value="">== Pilih Kategori Produk ==</option>
@@ -25,13 +26,9 @@
                         <label>Alamat</label>
                         <textarea class="form-control" rows="5" name="address">{{ $data->address }}</textarea>
                     </div>
-                    <div class="alert alert-danger">
-                        Isi form di bawah ini hanya bila Anda hendak mengubah gambar
-                    </div>
-                    <div class="form-group">
-                        <label>Upload Gambar</label><br>
-                        <input type="file" class="form-control" name="new_image">
-                    </div>
+                    {{-- <div class="form-group">
+                        <label>Upload Image</label>
+                    </div> --}}
                     <input type="hidden" class="form-control" name="image" value="{{ $data->image }}">
                     <button type="submit" class="btn btn-success"> Save</button>
                 </form>
