@@ -17,11 +17,12 @@
             </div>
             @endif
             <div class="card card-body">
-                <form class="form-horizontal m-t-30" action="{{url('/potensi-kategori')}}" method="POST" enctype="multipart/form-data">
+                <form class="form-horizontal m-t-30" action="{{url('/potensi-kategori',[$data->id])}}" method="POST" enctype="multipart/form-data">
+                    {{ method_field('PUT') }}
                     @csrf
                     <div class="form-group">
                         <label>Nama Kategori</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" value="{{ $data->name }}">
                     </div>
                     <button type="submit" class="btn btn-success"> Save</button>
                 </form>

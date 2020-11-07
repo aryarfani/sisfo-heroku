@@ -35,8 +35,10 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
         if ($request->method() == "POST") {
-
             $home = new ProductCategory;
             $home->name = $request->name;
             $home->save();
@@ -54,6 +56,8 @@ class ProductCategoryController extends Controller
      */
     public function show($id)
     {
+        $data = ProductCategory::find($id);
+        return view('formEditProductCategory', ['data' => $data]);
     }
 
     /**
@@ -63,8 +67,8 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-        $home = ProductCategory::find($id);
-        return view('formEditDashboard', ['home' => $home]);
+        $data = ProductCategory::find($id);
+        return view('formEditProductCategory', ['data' => $data]);
     }
 
     /**
@@ -75,6 +79,9 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
         $home = ProductCategory::find($id);
         $home->name = $request->name;
         $home->save();

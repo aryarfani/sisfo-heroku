@@ -41,6 +41,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required',
+            'image' => 'required',
+            'product_category_id' => 'required',
+        ]);
+
         if ($request->method() == "POST") {
             $directory = 'assets/images/home';
             $file = $request->file('image');
@@ -64,9 +71,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $data = Product::find($id);
+        $productCategory = ProductCategory::pluck('name', 'id');
+        return view('formEditProduct', ['data' => $data, 'productCategory' => $productCategory]);
     }
 
     /**
@@ -75,9 +84,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $data = Product::find($id);
+        $productCategory = ProductCategory::pluck('name', 'id');
+        return view('formEditProduct', ['data' => $data, 'productCategory' => $productCategory]);
     }
 
     /**
@@ -87,9 +98,36 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required',
+            'product_category_id' => 'required',
+        ]);
+
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->address = $request->address;
+        $product->product_category_id = $request->product_category_id;
+
+        // cek if image is changed
+        if (isset($request->new_image)) {
+            $directory = 'assets/images/home';
+            $file = $request->file('new_image');
+            $file->move($directory, $file->getClientOriginalName());
+            $product->image = $directory . "/" . $file->getClientOriginalName();
+
+            // delete old picture
+            if (file_exists($request->image)) {
+                unlink($request->image);
+            }
+        } else {
+            $product->image = $request->image;
+        }
+
+        $product->save();
+        return redirect('/produk');
     }
 
     /**

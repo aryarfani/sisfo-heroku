@@ -35,8 +35,10 @@ class BeritaCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
         if ($request->method() == "POST") {
-
             $home = new NewsCategory;
             $home->name = $request->name;
             $home->save();
@@ -54,6 +56,8 @@ class BeritaCategoryController extends Controller
      */
     public function show($id)
     {
+        $data = NewsCategory::find($id);
+        return view('formEditBeritaCategory', ['data' => $data]);
     }
 
     /**
@@ -63,8 +67,8 @@ class BeritaCategoryController extends Controller
      */
     public function edit($id)
     {
-        $home = NewsCategory::find($id);
-        return view('formEditDashboard', ['home' => $home]);
+        $data = NewsCategory::find($id);
+        return view('formEditBeritaCategory', ['data' => $data]);
     }
 
     /**
@@ -75,6 +79,9 @@ class BeritaCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
         $home = NewsCategory::find($id);
         $home->name = $request->name;
         $home->save();

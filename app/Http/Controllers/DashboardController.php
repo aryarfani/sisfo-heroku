@@ -15,6 +15,13 @@ class DashboardController extends Controller
     {
         $users = User::all();
 
+        // get agama data
+        $Islam = 0;
+        $Kristen = 0;
+        $Katolik = 0;
+        $Hindu = 0;
+        $Budha = 0;
+
         foreach ($users as $user) {
             if (isset($user->agama)) {
                 $agama = $user->agama;
@@ -35,6 +42,7 @@ class DashboardController extends Controller
 
         $dataAgama = [$Islam, $Kristen, $Katolik, $Hindu, $Budha];
 
+        // get gender data
         $malePure = count(User::where('jenis_kelamin', '=', '1')->get());
         $femalePure = count(User::where('jenis_kelamin', '=', '0')->get());
 
