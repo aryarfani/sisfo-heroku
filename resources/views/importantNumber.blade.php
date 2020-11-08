@@ -24,7 +24,7 @@
                 <td>{{$b->name}}</td>
                 <td>{{$b->address}}</td>
                 <td>{{$b->phone}}</td>
-                <td class="d-flex ">
+                <td class="d-flex">
                     <div class="mr-1">
                         <a class=" btn btn-warning px-3" href="{{action('ImportantNumberController@edit', $b->id)}}" type="button">Edit</a>
                     </div>

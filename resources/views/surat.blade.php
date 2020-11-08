@@ -25,12 +25,15 @@
                 <td>{{ $b["jenis_surat"] }}</td>
                 <td>{{ $b["created_at"] }}</td>
                 <td>{!! $b["status_surat"] == "0" ? '<span class="badge badge-info font-weight-bold">DIPROSES</span>': '<span class="font-weight-bold badge badge-success">SELESAI</span>' !!}</td>
-                <td>
+                <td class="d-flex">
                     @if($b["status_surat"] == "0")
-                    <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]).'/finish' }}" type="button" class="btn btn-success btn-block mb-2"><i class="mdi mdi-print"></i>Selesai</a>
-
+                    <div class="mr-1">
+                        <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]).'/finish' }}" type="button" class="btn btn-success">Selesai</a>
+                    </div>
                     @endif
-                    <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]) }}" type="button" class="btn btn-primary btn-block mb-2"><i class="mdi mdi-print"></i>Print</a>
+                    <div class="ml-1">
+                        <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]) }}" type="button" class="btn btn-primary">Print</a>
+                    </div>
                 </td>
             </tr>
             @endforeach
