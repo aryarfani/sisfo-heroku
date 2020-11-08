@@ -13,7 +13,6 @@
                 <th scope="col">No</th>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
-                <th scope="col">Visitor</th>
                 <th scope="col">Description</th>
                 <th scope="col">Image</th>
                 <th scope="col">Create Date</th>
@@ -26,9 +25,8 @@
                 <th scope="row">{{($berita->currentpage()-1) * $berita->perpage() + $key + 1}}</th>
                 <td>{{$b->title}}</td>
                 <td>{{$b->author}}</td>
-                <td>{{$b->visitor}}</td>
                 <td style="width: 300px;">{{$b->content}}</td>
-                <td><img class="img-fluid" src="{{$b->image}}"></td>
+                <td><img class="img-fluid" style="max-width: 250px;" src="{{$b->image}}"></td>
                 <td>{{$b->created_at}}</td>
                 <td class="d-flex ">
                     <div class="mr-1">

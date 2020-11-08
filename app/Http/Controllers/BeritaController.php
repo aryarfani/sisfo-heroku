@@ -47,7 +47,6 @@ class BeritaController extends Controller
             $news->title = $request->title;
             $news->author = auth()->user()->name;
             $news->content = $request->content;
-            $news->visitor = 0;
             $news->news_category = $request->news_category;
             $news->image = $directory . "/" . $file->getClientOriginalName();
             $news->save();
@@ -101,7 +100,6 @@ class BeritaController extends Controller
         $news->title = $request->title;
         $news->author = auth()->user()->name;
         $news->content = $request->content;
-        $news->visitor = 0;
 
         // cek if image is changed
         if (isset($request->new_image)) {
