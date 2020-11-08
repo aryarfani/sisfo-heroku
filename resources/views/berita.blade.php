@@ -28,7 +28,7 @@
                 <td>{{$b->author}}</td>
                 <td>{{$b->visitor}}</td>
                 <td style="width: 300px;">{{$b->content}}</td>
-                <td style="width: 300px;"><img src="{{$b->image}}" style="width: 200px; height: 200px"></td>
+                <td><img class="img-fluid" src="{{$b->image}}"></td>
                 <td>{{$b->created_at}}</td>
                 <td class="d-flex ">
                     <div class="mr-1">

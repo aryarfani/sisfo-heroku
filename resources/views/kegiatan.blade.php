@@ -22,7 +22,7 @@
             @foreach($data as $key => $b )
             <tr>
                 <th scope="row">{{ ($data->currentpage()-1) * $data->perpage() + $key + 1 }}</th>
-                <td style="width: 200px;"><img src="{{ $b->gambar }}" style="width: 170px;  object-fit: cover "></td>
+                <td><img src="{{ $b->gambar }}" class="img-fluid" style=" height: 100px"></td>
                 <td>{{ $b->user->nama }}</td>
                 <td>{{ $b->nama }}</td>
                 <td>{{ $b->tempat }}</td>

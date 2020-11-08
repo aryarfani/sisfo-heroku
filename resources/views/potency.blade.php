@@ -23,7 +23,7 @@
             @foreach($potency as $key => $b )
             <tr>
                 <th scope="row">{{($potency->currentpage()-1) * $potency->perpage() + $key + 1}}</th>
-                <td style="width: 200px;"><img src="{{$b->image}}" style="width: 100px; height: 100px"></td>
+                <td><img src="{{$b->image}}" class="img-fluid" style=" height: 100px"></td>
                 <td>{{$b->title}}</td>
                 <td>{{$b->address}}</td>
                 <td>{{$b->category->name}}</td>
