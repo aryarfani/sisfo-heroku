@@ -1,30 +1,7 @@
 @extends('../layouts/master')
 
 @section('content')
-<!-- ============================================================== -->
-<!-- Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-5 align-self-center">
-        </div>
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center justify-content-end">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            {{-- <a href="#">Nomer Penting</a> --}}
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
+
 <!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
@@ -41,25 +18,31 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($importantNumber as $b )
+            @foreach($importantNumber as $key => $b )
             <tr>
-                <th scope="row">{{$loop->index}}</th>
+                <th scope="row">{{($importantNumber->currentpage()-1) * $importantNumber->perpage() + $key + 1}}</th>
                 <td>{{$b->name}}</td>
                 <td>{{$b->address}}</td>
                 <td>{{$b->phone}}</td>
-                <td>
-                    <a href="{{action('ImportantNumberController@edit', $b->id)}}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a>
-                    <form action="{{ url('/nomer-penting', [$b->id]) }}" method="POST">
-                        <input class="btn btn-danger btn-block" type="submit" value="Delete">
-                        <input type="hidden" name="_method" value="delete" />
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    </form>
-
+                <td class="d-flex ">
+                    <div class="mr-1">
+                        <a class=" btn btn-warning px-3" href="{{action('ImportantNumberController@edit', $b->id)}}" type="button">Edit</a>
+                    </div>
+                    <div class="ml-1">
+                        <form action="{{ url('/nomer-penting', [$b->id]) }}" method="POST">
+                            <input class="btn btn-danger btn-block" type="submit" value="Delete">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {!! $importantNumber->links() !!}
+    </div>
 </div>
 <!-- ============================================================== -->
 <!-- End Container fluid  -->

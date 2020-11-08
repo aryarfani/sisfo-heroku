@@ -66,3 +66,17 @@
 .label-text ul :nth-child(5) .label-color {
     background: #CF1F69;
 }
+
+.logo-judul {
+    padding-top: 10px;
+    color: white;
+}
+
+.table th,
+.table td {
+    padding: 0.4rem;
+}
+
+.btn {
+    padding: 0.250rem 0.75rem;
+}

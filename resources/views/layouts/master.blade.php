@@ -71,10 +71,13 @@
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
-                                <!-- dark Logo text -->
+                                <span class="logo-judul">
+                                    ADMIN KLIK-DESA
+                                </span>
+                                {{-- <!-- dark Logo text -->
                                 <img src="/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
-                                <img src="/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                                <img src="/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> --}}
                             </span>
                         </a>
                     </div>
@@ -261,8 +264,7 @@
         <div class="page-wrapper">
             @yield('content')
             <footer class="footer text-center">
-                All Rights Reserved by Nice admin. Designed and Developed by
-                <a href="https://wrappixel.com">WrapPixel</a>.
+                2020 All Rights Reserved.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

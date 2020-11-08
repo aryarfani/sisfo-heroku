@@ -2,30 +2,6 @@
 
 @section('content')
 <!-- ============================================================== -->
-<!-- Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-5 align-self-center">
-        </div>
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center justify-content-end">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
@@ -43,27 +19,33 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($product as $b )
+            @foreach($product as $key => $b )
             <tr>
-                <th scope="row">{{$loop->index}}</th>
+                <th scope="row">{{($product->currentpage()-1) * $product->perpage() + $key + 1}}</th>
                 <td style="width: 200px;"><img src="{{$b->image}}" style="width: 100px; height: 100px"></td>
                 <td>{{$b->name}}</td>
                 <td>{{$b->address}}</td>
                 <td>{{$b->category->name}}</td>
                 <td>{{$b->created_at}}</td>
-                <td>
-                    <a href="{{url('/produk', [$b->id])}}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a>
-                    <form action="{{ url('/produk', [$b->id]) }}" method="POST">
-                        <input class="btn btn-danger btn-block" type="submit" value="Delete">
-                        <input type="hidden" name="_method" value="delete" />
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    </form>
-                    {{--                    <a href="{{ url('/dashboard', ['id' => $b->id]) }}" type="button" class="btn btn-danger btn-block"><i class="mdi mdi-delete"></i>Delete</a>--}}
+                <td class="d-flex ">
+                    <div class="mr-1">
+                        <a class=" btn btn-warning px-3" href="{{ url('/produk', [$b->id]) }}" type="button">Edit</a>
+                    </div>
+                    <div class="ml-1">
+                        <form action="{{ url('/produk', [$b->id]) }}" method="POST">
+                            <input class="btn btn-danger btn-block" type="submit" value="Delete">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {!! $product->links() !!}
+    </div>
 </div>
 <!-- ============================================================== -->
 <!-- End Container fluid  -->

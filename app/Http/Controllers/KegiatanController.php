@@ -10,7 +10,7 @@ class KegiatanController extends Controller
     public function index()
     {
 
-        $data = Kegiatan::all();
+        $data = Kegiatan::paginate(15);;
         return view('kegiatan', ['data' => $data]);
     }
 

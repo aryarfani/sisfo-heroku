@@ -2,30 +2,6 @@
 
 @section('content')
 <!-- ============================================================== -->
-<!-- Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-5 align-self-center">
-        </div>
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center justify-content-end">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
@@ -43,26 +19,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($user as $b )
+            @foreach($user as $key => $b )
             <tr>
-                <th scope="row">{{ $loop->index+1 }}</th>
+                <th scope="row">{{ ($user->currentpage()-1) * $user->perpage() + $key + 1 }}</th>
                 <td style="width: 200px;"><img src="{{ $b->gambar }}" style="width: 100px; height: 100px; object-fit: cover "></td>
                 <td>{{ $b->nik }}</td>
                 <td>{{ $b->nama }}</td>
                 <td>{{ $b->nomer_hp }}</td>
                 <td>{{ $b->created_at }}</td>
-                <td>
-                    <a href="{{ url('/user', [$b->id]) }}" type="button" class="btn btn-warning btn-block mb-2"><i class="mdi mdi-update"></i>Edit</a>
-                    <form action="{{ url('/user', [$b->id]) }}" method="POST">
-                        <input class="btn btn-danger btn-block" type="submit" value="Delete">
-                        <input type="hidden" name="_method" value="delete" />
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    </form>
+
+                <td class="d-flex ">
+                    <div class="mr-1">
+                        <a class=" btn btn-warning px-3" href="{{ url('/user', [$b->id]) }}" type="button">Edit</a>
+                    </div>
+                    <div class="ml-1">
+                        <form action="{{ url('/user', [$b->id]) }}" method="POST">
+                            <input class="btn btn-danger btn-block" type="submit" value="Delete">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {!! $user->links() !!}
+    </div>
 </div>
 <!-- ============================================================== -->
 <!-- End Container fluid  -->

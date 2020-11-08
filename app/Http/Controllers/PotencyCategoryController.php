@@ -14,7 +14,7 @@ class PotencyCategoryController extends Controller
      */
     public function index()
     {
-        $potencyCategory = PotencyCategory::all();
+        $potencyCategory = PotencyCategory::paginate(15);
         return view('potencyCategory', ['potencyCategory' => $potencyCategory]);
     }
 

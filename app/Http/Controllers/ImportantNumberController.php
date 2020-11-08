@@ -14,7 +14,7 @@ class ImportantNumberController extends Controller
      */
     public function index()
     {
-        $importantNumber = ImportantNumber::all();
+        $importantNumber = ImportantNumber::paginate(15);
         return view('importantNumber', ['importantNumber' => $importantNumber]);
     }
 

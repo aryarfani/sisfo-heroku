@@ -15,10 +15,7 @@ class PotencyController extends Controller
      */
     public function index()
     {
-
-        // $potency = Potency::find(1);
-        // dd($potency->category->name);
-        $potency = Potency::all();
+        $potency = Potency::paginate(15);
         return view('potency', ['potency' => $potency]);
     }
 

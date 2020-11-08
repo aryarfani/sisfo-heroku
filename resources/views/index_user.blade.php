@@ -66,6 +66,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {!! $home->links() !!}
+    </div>
 </div>
 <!-- ============================================================== -->
 <!-- End Container fluid  -->

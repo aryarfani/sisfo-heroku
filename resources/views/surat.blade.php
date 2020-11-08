@@ -2,30 +2,6 @@
 
 @section('content')
 <!-- ============================================================== -->
-<!-- Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-5 align-self-center">
-        </div>
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center justify-content-end">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="#">Surat</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
@@ -42,8 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $b )
-
+            @foreach($data as $key => $b )
             <tr>
                 <th scope="row">{{ $loop->index+1 }}</th>
                 <td>{{ $b["user"]["nama"] }}</td>
@@ -55,7 +30,6 @@
                     <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]).'/finish' }}" type="button" class="btn btn-success btn-block mb-2"><i class="mdi mdi-print"></i>Selesai</a>
 
                     @endif
-
                     <a href="{{ url('/'.Str::slug($b["jenis_surat"]), ['id' => $b["id"]]) }}" type="button" class="btn btn-primary btn-block mb-2"><i class="mdi mdi-print"></i>Print</a>
                 </td>
             </tr>
