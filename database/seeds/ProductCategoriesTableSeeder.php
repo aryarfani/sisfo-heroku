@@ -38,6 +38,20 @@ class ProductCategoriesTableSeeder extends Seeder
                 'created_at' => '2020-10-08 17:01:35',
                 'updated_at' => '2020-10-08 17:01:35',
             ),
+            3 => 
+            array (
+                'id' => 5,
+                'name' => 'Buah',
+                'created_at' => '2020-11-08 20:22:37',
+                'updated_at' => '2020-11-08 20:22:37',
+            ),
+            4 => 
+            array (
+                'id' => 6,
+                'name' => 'Rempah',
+                'created_at' => '2020-11-08 20:22:44',
+                'updated_at' => '2020-11-08 20:22:44',
+            ),
         ));
         
         
