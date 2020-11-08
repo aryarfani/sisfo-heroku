@@ -12,6 +12,7 @@ Route::get('user', 'Api\AuthController@getAuthUser');
 Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('berita', 'Api\BeritaController@index');
     Route::get('produk', 'Api\ProductController@index');
+    Route::get('produk-kategori', 'Api\ProductCategoryController@index');
     Route::get('potensi', 'Api\PotencyController@index');
     Route::get('nomer-penting', 'Api\ImportantNumberController@index');
 
