@@ -10,7 +10,7 @@ class JasaController extends Controller
     public function index()
     {
 
-        $data = Jasa::paginate(15);;
+        $data = Jasa::paginate(15);
         return view('jasa', ['data' => $data]);
     }
 

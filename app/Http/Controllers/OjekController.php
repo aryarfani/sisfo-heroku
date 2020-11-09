@@ -9,7 +9,7 @@ class OjekController extends Controller
 {
     public function index()
     {
-        $data = Ojek::paginate(15);;
+        $data = Ojek::paginate(15);
         return view('ojek', ['data' => $data]);
     }
 

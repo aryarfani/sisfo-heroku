@@ -11,7 +11,7 @@ class BeritaController extends Controller
 
     public function index()
     {
-        $berita = News::paginate(15);;
+        $berita = News::paginate(15);
         return view('berita', ['berita' => $berita]);
     }
 

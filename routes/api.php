@@ -15,6 +15,7 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('produk-kategori', 'Api\ProductCategoryController@index');
     Route::get('potensi', 'Api\PotencyController@index');
     Route::get('nomer-penting', 'Api\ImportantNumberController@index');
+    Route::get('info-desa', 'Api\InfoDesaController@index');
 
     // route surat
     Route::post('surat-usaha', 'Api\SuratKeteranganUsahaController@store');

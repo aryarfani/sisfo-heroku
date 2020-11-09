@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PasarTableSeeder::class);
         $this->call(OjekTableSeeder::class);
         $this->call(JasaTableSeeder::class);
+        $this->call(InfoDesasTableSeeder::class);
     }
 }

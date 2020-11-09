@@ -29,6 +29,8 @@ Route::resource('/nomer-penting', 'ImportantNumberController');
 Route::resource('/user', 'UserController');
 Route::resource('/kegiatan', 'KegiatanController');
 
+Route::resource('/info-desa', 'InfoDesaController');
+
 Route::resource('/ojek', 'OjekController');
 Route::resource('/pasar', 'PasarController');
 

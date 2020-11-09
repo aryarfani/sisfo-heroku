@@ -10,7 +10,7 @@ class PasarController extends Controller
     public function index()
     {
 
-        $data = Pasar::paginate(15);;
+        $data = Pasar::paginate(15);
         return view('pasar', ['data' => $data]);
     }
 

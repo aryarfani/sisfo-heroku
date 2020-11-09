@@ -14,7 +14,7 @@ class BeritaCategoryController extends Controller
      */
     public function index()
     {
-        $beritaCategory = NewsCategory::paginate(15);;
+        $beritaCategory = NewsCategory::paginate(15);
         return view('beritaCategory', ['beritaCategory' => $beritaCategory]);
     }
 
