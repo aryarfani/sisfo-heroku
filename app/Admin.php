@@ -16,7 +16,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'desa_id'
     ];
 
     /**
@@ -36,4 +36,10 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // menambahkan desa atributepo
+    public function getDesaAttribute()
+    {
+        return $this->attributes['desa_id'];
+    }
 }

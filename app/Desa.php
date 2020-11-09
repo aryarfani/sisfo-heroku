@@ -2,11 +2,10 @@
 
 namespace App;
 
-use App\Traits\MultitenantableTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class InfoDesa extends Model
+class Desa extends Model
 {
-    use MultitenantableTrait;
     protected $guarded = [];
+    protected $table = 'desa';
 }

@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\MultitenantableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class SuratKeteranganTidakMampu extends Model
 {
+    use MultitenantableTrait;
     protected $table = 'surat_keterangan_tidak_mampu';
     protected $guarded = [];
 

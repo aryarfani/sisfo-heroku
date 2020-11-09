@@ -10,6 +10,9 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
+    //? User model cant have multitenantrait because it will conflict login
+    // so manual query needed
+
     /**
      * The attributes that are mass assignable.
      *
@@ -48,5 +51,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return \Carbon\Carbon::parse($this->attributes['created_at'])
             ->isoFormat('Do MMMM YYYY, h:mm');
+    }
+
+    // menambahkan desa atributepo
+    public function getDesaAttribute()
+    {
+        return $this->attributes['desa_id'];
     }
 }

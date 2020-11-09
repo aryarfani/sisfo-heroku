@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Admin;
+use App\Desa;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -41,18 +42,19 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    public function showRegistrationForm()
+    {
+        $desa = Desa::pluck('nama', 'id');
+        return view('auth.register', ['desa' => $desa]);
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'desa_id' => ['required'],
         ]);
     }
 
@@ -64,10 +66,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Admin::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $admin = new Admin();
+        $admin->name = $data['name'];
+        $admin->email = $data['email'];
+
+        // cek if desa is not registered so it will create and insert the id
+        if ($data['desa_id'] == "0") {
+            $desa = Desa::create([
+                'nama' => $data['new_desa']
+            ]);
+            $admin->desa_id = $desa->id;
+        } else {
+            $admin->desa_id = $data['desa_id'];
+        }
+
+        $admin->password = Hash::make($data['password']);
+        $admin->save();
+
+        return $admin;
     }
 }

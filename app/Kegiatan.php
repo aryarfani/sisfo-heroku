@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\MultitenantableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Kegiatan extends Model
 {
+    use MultitenantableTrait;
     protected $table = 'kegiatan';
     protected $guarded = [];
     protected $with = ['user'];

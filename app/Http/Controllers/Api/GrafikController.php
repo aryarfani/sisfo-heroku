@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GrafikController extends Controller
@@ -15,14 +16,15 @@ class GrafikController extends Controller
      */
     public function getAgama()
     {
-        $users = User::all();
-
+        $users = User::where('desa_id', Auth::guard('user')->user()->desa)->get();
         // get agama data
         $Islam = 0;
         $Kristen = 0;
         $Katolik = 0;
         $Hindu = 0;
         $Budha = 0;
+
+        $data = [];
 
         foreach ($users as $user) {
             if (isset($user->agama)) {
@@ -36,6 +38,10 @@ class GrafikController extends Controller
         extract($data);
 
         $sum = $Islam + $Kristen + $Katolik + $Hindu + $Budha;
+
+        if ($sum == 0) {
+            return response()->json(["dataAgama" => 0, "dataGender" => 0, "male" => 0, "female" => 0, "penduduk" => 0, "total" => 0]);
+        }
         $Islam = $Islam / $sum * 100;
         $Kristen = $Kristen / $sum * 100;
         $Katolik = $Katolik / $sum * 100;
@@ -53,10 +59,17 @@ class GrafikController extends Controller
 
     public function getGender()
     {
-        $male = count(User::where('jenis_kelamin', '=', '1')->get());
-        $female = count(User::where('jenis_kelamin', '=', '0')->get());
+        $male = count(User::where('jenis_kelamin', '=', '1')->where('desa_id', Auth::guard('user')->user()->desa)->get());
+        $female = count(User::where('jenis_kelamin', '=', '0')->where('desa_id', Auth::guard('user')->user()->desa)->get());
 
         $sum = $male + $female;
+
+        if ($sum == 0) {
+            return response()->json([
+                'male' => 0,
+                'female' => 0,
+            ]);
+        }
         $male = $male / $sum * 100;
         $female = $female / $sum * 100;
 

@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\MultitenantableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Jasa extends Model
 {
+    use MultitenantableTrait;
     protected $table = 'jasa';
     protected $guarded = [];
     protected $with = ['user'];

@@ -12,7 +12,7 @@
                             <p class="font-16 m-b-5">Kepala Keluarga</p>
                         </div>
                         <div class="col-5">
-                            <h1 class="font-light text-right mb-0">23</h1>
+                            <h1 class="font-light text-right mb-0">{{ $total }}</h1>
                         </div>
                     </div>
                 </div>

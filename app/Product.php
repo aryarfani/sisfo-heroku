@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\MultitenantableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use MultitenantableTrait;
     // untuk menambahkan ke api
     protected $with = ['category'];
 
