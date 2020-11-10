@@ -16,7 +16,7 @@ class GrafikController extends Controller
      */
     public function getAgama()
     {
-        $users = User::where('desa_id', Auth::guard('user')->user()->desa)->get();
+        $users = User::where('desa_id', Auth::guard('user')->user()->desa->id)->get();
         // get agama data
         $Islam = 0;
         $Kristen = 0;
@@ -59,8 +59,8 @@ class GrafikController extends Controller
 
     public function getGender()
     {
-        $male = count(User::where('jenis_kelamin', '=', '1')->where('desa_id', Auth::guard('user')->user()->desa)->get());
-        $female = count(User::where('jenis_kelamin', '=', '0')->where('desa_id', Auth::guard('user')->user()->desa)->get());
+        $male = count(User::where('jenis_kelamin', '=', '1')->where('desa_id', Auth::guard('user')->user()->desa->id)->get());
+        $female = count(User::where('jenis_kelamin', '=', '0')->where('desa_id', Auth::guard('user')->user()->desa->id)->get());
 
         $sum = $male + $female;
 

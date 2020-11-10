@@ -37,9 +37,8 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // menambahkan desa atributepo
-    public function getDesaAttribute()
+    public function desa()
     {
-        return $this->attributes['desa_id'];
+        return $this->belongsTo(Desa::class, 'desa_id');
     }
 }

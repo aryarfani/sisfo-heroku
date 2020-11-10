@@ -72,7 +72,7 @@
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <span class="logo-judul">
-                                    CONTROL ROOM
+                                    Admin Desa {{ Auth::user()->desa->nama }}
                                 </span>
                                 {{-- <!-- dark Logo text -->
                                 <img src="/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />

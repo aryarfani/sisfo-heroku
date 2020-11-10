@@ -13,12 +13,8 @@ class User extends Authenticatable implements JWTSubject
     //? User model cant have multitenantrait because it will conflict login
     // so manual query needed
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $guarded = [];
+    protected $with = ['desa'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -54,8 +50,8 @@ class User extends Authenticatable implements JWTSubject
     }
 
     // menambahkan desa atributepo
-    public function getDesaAttribute()
+    public function desa()
     {
-        return $this->attributes['desa_id'];
+        return $this->belongsTo(Desa::class, 'desa_id');
     }
 }
