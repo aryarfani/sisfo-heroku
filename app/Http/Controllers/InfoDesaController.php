@@ -9,8 +9,12 @@ class InfoDesaController extends Controller
 {
     public function index()
     {
-        $data = InfoDesa::all();
-        return view('infoDesa', ['data' => $data]);
+        $data = InfoDesa::first();
+        // if data exist show edit
+        if ($data == null) {
+            return view('formAddInfoDesa');
+        }
+        return view('formEditInfoDesa', ['data' => $data]);
     }
 
     /**
@@ -65,9 +69,9 @@ class InfoDesaController extends Controller
             $info_desa->nomor_bpd = $request->nomor_bpd;
 
             $info_desa->save();
-            return redirect('/dashboard');
+            return redirect('/info-desa');
         } else {
-            return redirect('/dashboard');
+            return redirect('/info-desa');
         }
     }
 
@@ -100,11 +104,10 @@ class InfoDesaController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param int $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->validate($request, [
             'kepala_desa' => 'required',
-            'gambar_kepala_desa' => 'required',
             'alamat_kepala_desa' => 'required',
             'sekretaris' => 'required',
             'kaur_perencanaan' => 'required',
@@ -117,13 +120,8 @@ class InfoDesaController extends Controller
             'nomor_pemdes' => 'required',
         ]);
 
-        $directory = 'assets/images/home';
-        $file = $request->file('gambar_kepala_desa');
-        $file->move($directory, $file->getClientOriginalName());
-
         $info_desa = InfoDesa::first();
         $info_desa->kepala_desa = $request->kepala_desa;
-        $info_desa->gambar_kepala_desa = $directory . "/" . $file->getClientOriginalName();
         $info_desa->alamat_kepala_desa = $request->alamat_kepala_desa;
         $info_desa->sekretaris = $request->sekretaris;
         $info_desa->kaur_keuangan = $request->kaur_keuangan;
@@ -135,8 +133,15 @@ class InfoDesaController extends Controller
         $info_desa->nomor_pemdes = $request->nomor_pemdes;
         $info_desa->nomor_bpd = $request->nomor_bpd;
 
+        if (isset($request->gambar_kepala_desa)) {
+            $directory = 'assets/images/home';
+            $file = $request->file('gambar_kepala_desa');
+            $file->move($directory, $file->getClientOriginalName());
+            $info_desa->gambar_kepala_desa = $directory . "/" . $file->getClientOriginalName();
+        }
+
         $info_desa->save();
-        return redirect('/dashboard');
+        return redirect('/info-desa');
     }
 
     /**
@@ -150,7 +155,7 @@ class InfoDesaController extends Controller
         $data = InfoDesa::find($id);
         $hapus = $data->delete();
         if ($hapus) {
-            return redirect('/dashboard');
+            return redirect('/info-desa');
         }
     }
 }
