@@ -41,14 +41,15 @@ class BeritaController extends Controller
         if ($request->method() == "POST") {
             $directory = 'assets/images/home';
             $file = $request->file('image');
-            $file->move($directory, $file->getClientOriginalName());
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
 
             $news = new News;
             $news->title = $request->title;
             $news->author = auth()->user()->name;
             $news->content = $request->content;
             $news->news_category = $request->news_category;
-            $news->image = $directory . "/" . $file->getClientOriginalName();
+            $news->image = $directory . "/" . $new_file_name;
             $news->save();
             return redirect('/berita');
         } else {
@@ -105,8 +106,9 @@ class BeritaController extends Controller
         if (isset($request->new_image)) {
             $directory = 'assets/images/home';
             $file = $request->file('new_image');
-            $file->move($directory, $file->getClientOriginalName());
-            $news->image = $directory . "/" . $file->getClientOriginalName();
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
+            $news->image = $directory . "/" . $new_file_name;
 
             // delete old picture
             if (file_exists($request->image)) {

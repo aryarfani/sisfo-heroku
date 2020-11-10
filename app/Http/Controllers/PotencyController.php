@@ -47,13 +47,14 @@ class PotencyController extends Controller
         if ($request->method() == "POST") {
             $directory = 'assets/images/home';
             $file = $request->file('image');
-            $file->move($directory, $file->getClientOriginalName());
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
 
             $potency = new Potency;
             $potency->title = $request->title;
             $potency->address = $request->address;
             $potency->potency_category_id = $request->potency_category_id;
-            $potency->image = $directory . "/" . $file->getClientOriginalName();
+            $potency->image = $directory . "/" . $new_file_name;
             $potency->save();
             return redirect('/potensi');
         } else {
@@ -111,8 +112,9 @@ class PotencyController extends Controller
         if (isset($request->new_image)) {
             $directory = 'assets/images/home';
             $file = $request->file('new_image');
-            $file->move($directory, $file->getClientOriginalName());
-            $potency->image = $directory . "/" . $file->getClientOriginalName();
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
+            $potency->image = $directory . "/" . $new_file_name;
 
             // delete old picture
             if (file_exists($request->image)) {

@@ -65,8 +65,9 @@ class UserController extends Controller
             if (isset($request->gambar)) {
                 $directory = 'assets/images/home';
                 $file = $request->file('gambar');
-                $file->move($directory, $file->getClientOriginalName());
-                $user->gambar = $directory . "/" . $file->getClientOriginalName();
+                $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+                $file->move($directory, $new_file_name);
+                $user->gambar = $directory . "/" . $new_file_name;
             }
 
             $user->save();
@@ -140,8 +141,9 @@ class UserController extends Controller
         if (isset($request->new_gambar)) {
             $directory = 'assets/images/home';
             $file = $request->file('new_gambar');
-            $file->move($directory, $file->getClientOriginalName());
-            $user->gambar = $directory . "/" . $file->getClientOriginalName();
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
+            $user->gambar = $directory . "/" . $new_file_name;
 
             // delete old picture
             if (file_exists($request->gambar)) {

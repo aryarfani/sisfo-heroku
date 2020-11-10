@@ -48,13 +48,14 @@ class ProductController extends Controller
         if ($request->method() == "POST") {
             $directory = 'assets/images/home';
             $file = $request->file('image');
-            $file->move($directory, $file->getClientOriginalName());
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
 
             $product = new Product;
             $product->name = $request->name;
             $product->address = $request->address;
             $product->product_category_id = $request->product_category_id;
-            $product->image = $directory . "/" . $file->getClientOriginalName();
+            $product->image = $directory . "/" . $new_file_name;
             $product->save();
             return redirect('/produk');
         } else {
@@ -112,8 +113,9 @@ class ProductController extends Controller
         if (isset($request->new_image)) {
             $directory = 'assets/images/home';
             $file = $request->file('new_image');
-            $file->move($directory, $file->getClientOriginalName());
-            $product->image = $directory . "/" . $file->getClientOriginalName();
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
+            $product->image = $directory . "/" . $new_file_name;
 
             // delete old picture
             if (file_exists($request->image)) {

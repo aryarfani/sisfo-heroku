@@ -29,7 +29,8 @@ class JasaController extends Controller
 
         $directory = 'assets/images/home';
         $file = $request->file('gambar');
-        $file->move($directory, $file->getClientOriginalName());
+        $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+        $file->move($directory, $new_file_name);
 
         $jasa = new Jasa;
         $jasa->user_id = Auth::guard('user')->user()->id;
@@ -37,7 +38,7 @@ class JasaController extends Controller
         $jasa->deskripsi = $request->deskripsi;
         $jasa->harga = $request->harga;
         $jasa->nomer_hp = $request->nomer_hp;
-        $jasa->gambar = $directory . "/" . $file->getClientOriginalName();
+        $jasa->gambar = $directory . "/" . $new_file_name;
         $jasa->save();
 
         return response()->json(['data' => $jasa]);

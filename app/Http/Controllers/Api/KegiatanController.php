@@ -26,13 +26,14 @@ class KegiatanController extends Controller
 
         $directory = 'assets/images/home';
         $file = $request->file('gambar');
-        $file->move($directory, $file->getClientOriginalName());
+        $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+        $file->move($directory, $new_file_name);
 
         $kegiatan = new Kegiatan;
         $kegiatan->user_id = Auth::guard('user')->user()->id;
         $kegiatan->nama = $request->nama;
         $kegiatan->tempat = $request->tempat;
-        $kegiatan->gambar = $directory . "/" . $file->getClientOriginalName();
+        $kegiatan->gambar = $directory . "/" . $new_file_name;
         $kegiatan->save();
 
         return response()->json($kegiatan);

@@ -40,8 +40,9 @@ class AuthController extends Controller
         if (isset($request->gambar)) {
             $directory = 'assets/images/home';
             $file = $request->file('gambar');
-            $file->move($directory, $file->getClientOriginalName());
-            $user->gambar = $directory . "/" . $file->getClientOriginalName();
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
+            $user->gambar = $directory . "/" . $new_file_name;
         }
         $user->save();
 

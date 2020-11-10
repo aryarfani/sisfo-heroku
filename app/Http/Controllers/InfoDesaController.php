@@ -52,11 +52,12 @@ class InfoDesaController extends Controller
         if ($request->method() == "POST") {
             $directory = 'assets/images/home';
             $file = $request->file('gambar_kepala_desa');
-            $file->move($directory, $file->getClientOriginalName());
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
 
             $info_desa = new InfoDesa;
             $info_desa->kepala_desa = $request->kepala_desa;
-            $info_desa->gambar_kepala_desa = $directory . "/" . $file->getClientOriginalName();
+            $info_desa->gambar_kepala_desa = $directory . "/" . $new_file_name;
             $info_desa->alamat_kepala_desa = $request->alamat_kepala_desa;
             $info_desa->sekretaris = $request->sekretaris;
             $info_desa->kaur_keuangan = $request->kaur_keuangan;
@@ -136,8 +137,9 @@ class InfoDesaController extends Controller
         if (isset($request->gambar_kepala_desa)) {
             $directory = 'assets/images/home';
             $file = $request->file('gambar_kepala_desa');
-            $file->move($directory, $file->getClientOriginalName());
-            $info_desa->gambar_kepala_desa = $directory . "/" . $file->getClientOriginalName();
+            $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+            $file->move($directory, $new_file_name);
+            $info_desa->gambar_kepala_desa = $directory . "/" . $new_file_name;
         }
 
         $info_desa->save();

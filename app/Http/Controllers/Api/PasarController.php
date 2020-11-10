@@ -29,7 +29,8 @@ class PasarController extends Controller
 
         $directory = 'assets/images/home';
         $file = $request->file('gambar');
-        $file->move($directory, $file->getClientOriginalName());
+        $new_file_name = rand() . '.' . $file->getClientOriginalExtension();
+        $file->move($directory, $new_file_name);
 
         $pasar = new Pasar;
         $pasar->user_id = Auth::guard('user')->user()->id;
@@ -37,7 +38,7 @@ class PasarController extends Controller
         $pasar->deskripsi = $request->deskripsi;
         $pasar->harga = $request->harga;
         $pasar->nomer_hp = $request->nomer_hp;
-        $pasar->gambar = $directory . "/" . $file->getClientOriginalName();
+        $pasar->gambar = $directory . "/" . $new_file_name;
         $pasar->save();
 
         return response()->json($pasar);
