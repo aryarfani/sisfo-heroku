@@ -40,7 +40,7 @@ class UserController extends Controller
         if ($request->method() == "POST") {
 
             $this->validate($request, [
-                'nik' => 'required|numeric',
+                'nik' => 'required|numeric|unique:users,nik',
                 'nama' => 'required',
                 'pekerjaan' => 'required',
                 'agama' => 'required',
@@ -110,8 +110,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+
         $this->validate($request, [
-            'nik' => 'required|numeric',
+            'nik' => 'required|numeric|unique:users,nik,' . $user->id,
             'nama' => 'required',
             'pekerjaan' => 'required',
             'agama' => 'required',
@@ -121,7 +123,7 @@ class UserController extends Controller
             'jenis_kelamin' => 'required',
         ]);
 
-        $user = User::find($id);
+
         $user->nik = $request->nik;
         $user->nama = $request->nama;
         $user->pekerjaan = $request->pekerjaan;
@@ -137,6 +139,7 @@ class UserController extends Controller
         } else {
             $user->password = $request->password;
         }
+
         // cek if image is changed
         if (isset($request->new_gambar)) {
             $directory = 'assets/images/home';
