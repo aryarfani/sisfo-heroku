@@ -6,7 +6,9 @@
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
                 <h3><b>Register</b></h3>
-                <img src="/admin/assets/login/images/img-01.png" alt="IMG">
+                <div class="text-center">
+                    <img src="/admin/assets/login/images/logo-big.png" style="max-height: 250px" alt="IMG">
+                </div>
             </div>
             <form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
                 @if(count($errors) > 0)

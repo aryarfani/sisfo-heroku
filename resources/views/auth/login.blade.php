@@ -4,8 +4,8 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt>
-                <img src="/admin/assets/login/images/img-01.png" alt="IMG">
+            <div class="login100-pic js-tilt text-center" data-tilt>
+                <img src="/admin/assets/login/images/logo-big.png" class="img-fluid" style="max-height: 250px" alt="IMG">
             </div>
 
             <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
@@ -43,11 +43,11 @@
                     </button>
                 </div>
 
-                @if(Route::has('password.request'))
+                {{-- @if(Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
+                {{ __('Forgot Your Password?') }}
                 </a>
-                @endif
+                @endif --}}
 
                 <div class="text-center p-t-136">
                     <a class="txt2" href="{{ route('register') }}">
