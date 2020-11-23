@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\InfoDesa;
 use Illuminate\Http\Request;
 use App\SuratKeteranganDomisili;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -16,7 +17,6 @@ class SuratKeteranganDomisiliController extends Controller
      */
     public function index()
     {
-
         $suratKeteranganDomisili = SuratKeteranganDomisili::all();
         return view('surat', ['suratKeteranganDomisili' => $suratKeteranganDomisili]);
     }
@@ -45,8 +45,9 @@ class SuratKeteranganDomisiliController extends Controller
     // this function is to create pdf
     public function show($id)
     {
+        $infoDesa = InfoDesa::first();
         $data = SuratKeteranganDomisili::find($id);
-        $pdf = PDF::loadView('surat.suratKeteranganDomisili', array('data' => $data));
+        $pdf = PDF::loadView('surat.suratKeteranganDomisili', array('data' => $data, 'infoDesa' => $infoDesa));
         return $pdf->download('surat.suratKeteranganDomisili.pdf');
     }
 

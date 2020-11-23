@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDesaTable extends Migration
+class CreateBumdesCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateDesaTable extends Migration
      */
     public function up()
     {
-        Schema::create('desa', function (Blueprint $table) {
+        Schema::create('bumdes_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('alamat_kantor');
+            $table->unsignedBigInteger('desa_id');
+
+            $table->string('name');
             $table->timestamps();
+
+            $table->foreign('desa_id')->references('id')->on('desa')->onDelete('cascade');
         });
     }
 
@@ -28,6 +31,6 @@ class CreateDesaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('desa');
+        Schema::dropIfExists('bumdes_categories');
     }
 }

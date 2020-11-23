@@ -12,7 +12,7 @@ class KegiatanController extends Controller
 
     public function index()
     {
-        $kegiatan = Kegiatan::all();
+        $kegiatan = Kegiatan::where('is_approved',  1)->get();
         return response()->json($kegiatan);
     }
 

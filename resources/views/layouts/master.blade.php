@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="KlikDesa">
+    <meta name="author" content="Ary arfani">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <title>Nice admin Template - The Ultimate Multipurpose admin template</title>
+    <title>Dashboard KlikDesa</title>
     <!-- Custom CSS -->
     <link href="/admin/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -161,45 +161,27 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/info-bpd" aria-expanded="false">
+                                <i class="mdi mdi-arrange-send-backward"></i>
+                                <span class="hide-menu">Info BPD</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/surat" aria-expanded="false">
                                 <i class="mdi mdi-email"></i>
                                 <span class="hide-menu">Permintaan Surat</span>
                             </a>
                         </li>
-                        {{-- <li class="sidebar-item">
-                            <div class="dropdown">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="mdi mdi-av-timer"></i>
-                                    <span class="hide-menu">Profil Desa</span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/visi-misi">Visi Misi</a>
-                                    <a class="dropdown-item" href="/sejarah-desa">Sejarah Desa</a>
-                                    <a class="dropdown-item" href="/gambaran-umum">Gambaran Umum</a>
-                                    <a class="dropdown-item" href="/staff-kategori">Kategori Staff</a>
-                                    <a class="dropdown-item" href="/staff">Staff</a>
-                                    <a class="dropdown-item" href="#">Profil Wilayah Desa</a>
-                                </div>
-                            </div>
-                        </li> --}}
-                        {{-- <li class="sidebar-item">
-                            <div class="dropdown">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
-                                    <i class="mdi mdi-av-timer"></i>
-                                    <span class="hide-menu">Lembaga Masyarakat</span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">LPMD</a>
-                                    <a class="dropdown-item" href="#">Karang Taruna</a>
-                                    <a class="dropdown-item" href="#">Linmas</a>
-                                </div>
-                            </div>
-                        </li> --}}
-
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/nomer-penting" aria-expanded="false">
                                 <i class="mdi mdi-contacts"></i>
                                 <span class="hide-menu">Nomer Penting</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/loker" aria-expanded="false">
+                                <i class="mdi mdi-paperclip"></i>
+                                <span class="hide-menu">Loker</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -213,6 +195,24 @@
                                 <i class="mdi mdi-airballoon"></i>
                                 <span class="hide-menu">Kegiatan</span>
                             </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/produk-hukum" aria-expanded="false">
+                                <i class="mdi mdi-file-document"></i>
+                                <span class="hide-menu">Produk Hukum</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <div class="dropdown">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
+                                    <i class="mdi mdi-ornament-variant"></i>
+                                    <span class="hide-menu">Bumdes</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/bumdes">Bumdes</a>
+                                    <a class="dropdown-item" href="/bumdes-kategori">Kategori Bumdes</a>
+                                </div>
+                            </div>
                         </li>
                         <li class="sidebar-item">
                             <div class="dropdown">

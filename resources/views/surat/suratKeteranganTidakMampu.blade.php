@@ -11,7 +11,6 @@
             border-style: ;
             border-top: 2px solid #000;
         }
-
     </style>
 </head>
 
@@ -27,9 +26,9 @@
                             <br>
                             KECAMATAN MOJOROTO
                             <br>
-                            KANTOR KEPALA DESA LIRBOYO
+                            KANTOR KEPALA DESA {{ $infoDesa->desa->nama }}
                             <br>
-                            <span style="font-style: italic; font-size: 12px">Jl. Semeru Gg. II No.31, Lirboyo, Kec. Mojoroto, Kota Kediri, Jawa Timur 64117</span>
+                            <span style="font-style: italic; font-size: 12px">{{ $infoDesa->desa->alamat }}</span>
                         </span>
                     </td>
                 </tr>
@@ -88,7 +87,7 @@
     </table>
 
     <div style="line-height: 1.4">
-        Benar bahwa yang tersebut namanya diatas penduduk Desa Lirboyo, Kecamatan Mojoroto dan keluarga yang bersangkutan
+        Benar bahwa yang tersebut namanya diatas penduduk Desa {{ $infoDesa->desa->nama }} dan keluarga yang bersangkutan
         benar - benar <b>tergolong keluarga miskin / tidak mampu.</b>
         <br>
         Demikian surat keterangan tidak mampu ini dibuat dengan sebenarnya dan untuk di pergunakan sebgaimana mestinya dan kepada
@@ -105,13 +104,13 @@
             <td height="20" width="10"></td>
             <td>
                 <p>
-                    Kediri, 20 0ktober 2020
+                    Kediri, {{ date('d F Y') }}
                     <br>
                     Kepala Desa Lirboyo
                 </p>
                 <br>
                 <br>
-                <P style="font-weight: bold;  text-decoration: underline; font-size: 14px">Agung Gumelar</P>
+                <P style="font-weight: bold;  text-decoration: underline; font-size: 14px">{{ $infoDesa->kepala_desa }}</P>
 
             </td>
         </tr>

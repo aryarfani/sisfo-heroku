@@ -25,4 +25,14 @@ class KegiatanController extends Controller
             return redirect('/kegiatan');
         }
     }
+
+    // function to approve kegiatan
+    public function approve($id)
+    {
+        $kegiatan = Kegiatan::find($id);
+        $kegiatan->update(array(
+            'is_approved' => 1,
+        ));
+        return redirect('/kegiatan');
+    }
 }

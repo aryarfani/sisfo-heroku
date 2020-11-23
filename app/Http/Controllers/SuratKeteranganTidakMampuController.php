@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\InfoDesa;
 use Illuminate\Http\Request;
 use App\SuratKeteranganTidakMampu;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -28,8 +29,10 @@ class SuratKeteranganTidakMampuController extends Controller
     // this function is to create pdf
     public function show($id)
     {
+        $infoDesa = InfoDesa::first();
+
         $data = SuratKeteranganTidakMampu::find($id);
-        $pdf = PDF::loadView('surat.suratKeteranganTidakMampu', array('data' => $data));
+        $pdf = PDF::loadView('surat.suratKeteranganTidakMampu', array('data' => $data, 'infoDesa' => $infoDesa));
         return $pdf->download('surat.suratKeteranganTidakMampu.pdf');
     }
 

@@ -16,6 +16,7 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('potensi', 'Api\PotencyController@index');
     Route::get('nomer-penting', 'Api\ImportantNumberController@index');
     Route::get('info-desa', 'Api\InfoDesaController@index');
+    Route::get('info-bpd', 'Api\InfoBpdController@index');
 
     // route surat
     Route::post('surat-usaha', 'Api\SuratKeteranganUsahaController@store');
@@ -31,11 +32,11 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('data-agama', 'Api\GrafikController@getAgama');
     Route::get('data-gender', 'Api\GrafikController@getGender');
 
-    // route jasa
-    Route::post('jasa', 'Api\JasaController@store');
-    Route::delete('jasa/{id}/delete', 'Api\JasaController@destroy');
-    Route::get('jasa', 'Api\JasaController@index');
-    Route::get('jasa/user', 'Api\JasaController@indexUser');
+    // route bumdes
+    Route::get('bumdes', 'Api\BumdesController@index');
+
+    // route produk-hukum
+    Route::get('produk-hukum', 'Api\ProdukHukumController@index');
 
     // route pasar
     Route::post('pasar', 'Api\PasarController@store');
@@ -48,4 +49,10 @@ Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('ojek', 'Api\OjekController@index');
     Route::delete('ojek/user/delete', 'Api\OjekController@destroy');
     Route::get('ojek/user', 'Api\OjekController@indexUser');
+
+    // route jasa
+    Route::post('loker', 'Api\LokerController@store');
+    Route::get('loker', 'Api\LokerController@index');
+    Route::delete('loker/{id}/delete', 'Api\LokerController@destroy');
+    Route::get('loker/user', 'Api\LokerController@indexUser');
 });

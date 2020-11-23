@@ -26,5 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call(OjekTableSeeder::class);
         $this->call(JasaTableSeeder::class);
         $this->call(InfoDesasTableSeeder::class);
+        $this->call(LokersTableSeeder::class);
+        $this->call(ProdukHukumsTableSeeder::class);
+        $this->call(BumdesCategoriesTableSeeder::class);
+        $this->call(BumdesTableSeeder::class);
+        $this->call(InfoBpdsTableSeeder::class);
     }
 }

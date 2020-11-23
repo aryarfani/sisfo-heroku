@@ -20,6 +20,8 @@ class CreateKegiatanTable extends Migration
             $table->string('nama');
             $table->string('tempat');
             $table->string('gambar');
+            $table->boolean('is_approved')->default(0);
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

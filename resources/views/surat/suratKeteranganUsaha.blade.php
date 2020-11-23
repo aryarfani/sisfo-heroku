@@ -11,7 +11,6 @@
             border-style: ;
             border-top: 2px solid #000;
         }
-
     </style>
 </head>
 
@@ -27,9 +26,9 @@
                             <br>
                             KECAMATAN MOJOROTO
                             <br>
-                            KANTOR KEPALA DESA LIRBOYO
+                            KANTOR KEPALA DESA {{ $infoDesa->desa->nama }}
                             <br>
-                            <span style="font-style: italic; font-size: 12px">Jl. Semeru Gg. II No.31, Lirboyo, Kec. Mojoroto, Kota Kediri, Jawa Timur 64117</span>
+                            <span style="font-style: italic; font-size: 12px">{{ $infoDesa->desa->alamat }}</span>
                         </span>
                     </td>
                 </tr>
@@ -43,7 +42,7 @@
         <span style="font-weight: bold; text-decoration: underline; font-size: 14px">SURAT KETERANGAN USAHA</span> <br>
         <span style="font-weight: bold; font-size: 14px">NOMOR: 475.6/ /Pem/2020</span>
     </div>
-    <p>Yang bertanda tangan dibawah ini Kepala Desa Lirboyo Kediri Kecamatan Mojoroto Kota Kediri, menerangkan dengan sebenarnya :</p>
+    <p>Yang bertanda tangan dibawah ini Kepala Desa {{ $infoDesa->desa->nama }} Kediri Kecamatan Mojoroto Kota Kediri, menerangkan dengan sebenarnya :</p>
     <br>
 
     <table border="0">
@@ -95,13 +94,13 @@
             <td height="20" width="10"></td>
             <td>
                 <p>
-                    Kediri, 20 0ktober 2020
+                    Kediri, {{ date('d F Y') }}
                     <br>
                     Kepala Desa Lirboyo
                 </p>
                 <br>
                 <br>
-                <P style="font-weight: bold;  text-decoration: underline; font-size: 14px">Agung Gumelar</P>
+                <P style="font-weight: bold;  text-decoration: underline; font-size: 14px">{{ $infoDesa->kepala_desa }}</P>
 
             </td>
         </tr>

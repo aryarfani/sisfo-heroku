@@ -12,7 +12,7 @@ class PasarController extends Controller
 
     public function index()
     {
-        $data = Pasar::all();
+        $data = Pasar::where('user_id', '!=', Auth::guard('user')->user()->id)->get();
         return response()->json($data);
     }
 
