@@ -60,6 +60,7 @@ class UserController extends Controller
             $user->status = $request->status;
             $user->nomer_hp = $request->nomer_hp;
             $user->jenis_kelamin = $request->jenis_kelamin;
+            $user->desa_id = Auth::user()->desa->id;
             $user->password = bcrypt($request->password);
 
             if (isset($request->gambar)) {

@@ -10,8 +10,8 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    //? User model cant have multitenantrait because it will conflict login
-    // so manual query needed
+    //! User model cant have multitenantrait because it will conflict login
+    //* so manual query needed
 
     protected $guarded = [];
     protected $with = ['desa'];
