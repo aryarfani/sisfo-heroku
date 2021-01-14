@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UsersImport;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -15,8 +18,22 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::where('desa_id', Auth::user()->desa->id)->paginate(15);
-        return view('user', ['user' => $user]);
+        // take all user based on desa id
+        $user = User::query();
+
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('users');
+            foreach ($columns as $column) {
+                $user->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+
+            return view('user', ['user' => $user->where('desa_id', Auth::user()->desa->id)->paginate(15)]);
+        }
+        return view('user', ['user' => $user->where('desa_id', Auth::user()->desa->id)->paginate(15)]);
     }
 
     /**
@@ -176,5 +193,21 @@ class UserController extends Controller
         if ($hapus) {
             return redirect('/user');
         }
+    }
+
+    /**
+     * Import user from excel
+     */
+    public function import(Request $request)
+    {
+        $fileImport = $request->file('import');
+        // dd($fileImport);
+        $fileImportName = date('dmyHis') . '.' . $fileImport->extension();
+        $path = 'assets/imports';
+        $fileImport->move($path, $fileImportName);
+
+        Excel::import(new UsersImport, $path . '/' . $fileImportName);
+
+        return redirect()->back()->with('status', 'File sukses di upload');
     }
 }

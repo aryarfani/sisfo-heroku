@@ -4,14 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Kegiatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class KegiatanController extends Controller
 {
     public function index()
     {
+        $data = Kegiatan::query();
+        $search = request()->query('q');
 
-        $data = Kegiatan::paginate(15);
-        return view('kegiatan', ['data' => $data]);
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('kegiatan');
+            foreach ($columns as $column) {
+                $data->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+
+        return view('kegiatan', ['data' => $data->paginate(15)]);
     }
 
     public function destroy($id)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class ProductCategoryController extends Controller
 {
@@ -14,8 +15,20 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $productCategory = ProductCategory::paginate(15);
-        return view('productCategory', ['productCategory' => $productCategory]);
+
+        $data = ProductCategory::query();
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('product_categories');
+            foreach ($columns as $column) {
+                $data->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+
+        return view('productCategory', ['productCategory' => $data->paginate(15)]);
     }
 
     /**

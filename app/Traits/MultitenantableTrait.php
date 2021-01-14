@@ -19,12 +19,14 @@ trait MultitenantableTrait
                 return $builder->where('desa_id', Auth::user()->desa->id);
             });
         } else {
-            static::creating(function ($model) {
-                $model->desa_id = Auth::guard('user')->user()->desa->id;
-            });
-            static::addGlobalScope('desa_id', function (Builder $builder) {
-                return $builder->where('desa_id', Auth::guard('user')->user()->desa->id);
-            });
+            if (Auth::guard('user')->user() != null) {
+                static::creating(function ($model) {
+                    $model->desa_id = Auth::guard('user')->user()->desa->id;
+                });
+                static::addGlobalScope('desa_id', function (Builder $builder) {
+                    return $builder->where('desa_id', Auth::guard('user')->user()->desa->id);
+                });
+            }
         }
     }
 }

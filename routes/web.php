@@ -16,14 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::redirect('/', '/dashboard');
+Route::get('/optimize', 'HelperController@optimize');
 
-Route::get('/optimize', function () {
-    $output = [];
-    \Artisan::call('optimize', $output);
-    dd($output);
-});
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/migrate', 'HelperController@migrate');
+
     Route::get('/dashboard', 'DashboardController@index');
 
     Route::resource('/berita', 'BeritaController');
@@ -36,6 +34,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/potensi', 'PotencyController');
     Route::resource('/potensi-kategori', 'PotencyCategoryController');
     Route::resource('/nomer-penting', 'ImportantNumberController');
+
+    // add user import
+    Route::post('/user/import', 'UserController@import');
     Route::resource('/user', 'UserController');
     Route::resource('/loker', 'LokerController');
     Route::get('/loker/{id}/approve', 'LokerController@approve');
@@ -47,7 +48,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/ojek', 'OjekController');
     Route::resource('/pasar', 'PasarController');
-
 
     Route::get('/surat-keterangan-domisili/{id}/finish', 'SuratKeteranganDomisiliController@finish');
     Route::get('/surat-keterangan-usaha/{id}/finish', 'SuratKeteranganUsahaController@finish');

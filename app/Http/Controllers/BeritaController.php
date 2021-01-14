@@ -5,14 +5,25 @@ namespace App\Http\Controllers;
 use App\News;
 use App\NewsCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class BeritaController extends Controller
 {
 
     public function index()
     {
-        $berita = News::paginate(15);
-        return view('berita', ['berita' => $berita]);
+        $data = News::query();
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('news');
+            foreach ($columns as $column) {
+                $data->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+        return view('berita', ['berita' => $data->paginate(15)]);
     }
 
     /**

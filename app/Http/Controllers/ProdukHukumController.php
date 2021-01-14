@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProdukHukum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class ProdukHukumController extends Controller
 {
@@ -14,8 +15,19 @@ class ProdukHukumController extends Controller
      */
     public function index()
     {
-        $produkHukum = ProdukHukum::paginate(15);
-        return view('produkHukum', ['produkHukum' => $produkHukum]);
+        $data = ProdukHukum::query();
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('produk_hukums');
+            foreach ($columns as $column) {
+                $data->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+
+        return view('produkHukum', ['produkHukum' => $data->paginate(15)]);
     }
 
     /**

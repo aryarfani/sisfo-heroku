@@ -9,6 +9,9 @@ Route::post('login', 'Api\AuthController@login');
 Route::get('logout', 'Api\AuthController@logout');
 Route::get('user', 'Api\AuthController@getAuthUser');
 
+// route for unregistered user to get pasar
+Route::get('all-pasar', 'Api\PasarController@allIndex');
+
 Route::group(['middleware' => 'jwtMiddleware'], function () {
     Route::get('berita', 'Api\BeritaController@index');
     Route::get('produk', 'Api\ProductController@index');

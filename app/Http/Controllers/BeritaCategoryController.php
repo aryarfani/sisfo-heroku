@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\NewsCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class BeritaCategoryController extends Controller
 {
@@ -14,8 +15,19 @@ class BeritaCategoryController extends Controller
      */
     public function index()
     {
-        $beritaCategory = NewsCategory::paginate(15);
-        return view('beritaCategory', ['beritaCategory' => $beritaCategory]);
+        $data = NewsCategory::query();
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('news_category');
+            foreach ($columns as $column) {
+                $data->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+
+        return view('beritaCategory', ['beritaCategory' => $data->paginate(15)]);
     }
 
     /**

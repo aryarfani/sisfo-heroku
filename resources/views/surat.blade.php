@@ -5,7 +5,29 @@
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
-    {{-- <a href="{{ action('SuratKeteranganDomisiliController@create') }}" type="button" class="btn btn-success mb-3"><i class="mdi mdi-plus-circle"></i> Add New</a> --}}
+    <form method="GET" action="{{ url('/surat') }}">
+        <div class="form-group">
+            <label>Date Range Picker</label>
+            <div class="row">
+                <div class="col-3">
+                    <div class="input-group">
+                        <input type="date" id="picker" name="start" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group">
+                        <input type="date" id="picker" name="end" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <button class=" btn btn-primary ml-3" type="submit">
+                        Cari
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
     <table class="table table-hover table-striped table-bordered">
         <thead class="table-info">
             <tr>

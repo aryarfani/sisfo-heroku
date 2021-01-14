@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ImportantNumber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class ImportantNumberController extends Controller
 {
@@ -14,8 +15,19 @@ class ImportantNumberController extends Controller
      */
     public function index()
     {
-        $importantNumber = ImportantNumber::paginate(15);
-        return view('importantNumber', ['importantNumber' => $importantNumber]);
+        $importantNumber = ImportantNumber::query();
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('important_numbers');
+            foreach ($columns as $column) {
+                $importantNumber->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+        // dd($importantNumber->paginate(15)->appends(['keyword' => $search]));
+        return view('importantNumber', ['importantNumber' => $importantNumber->paginate(15)]);
     }
 
     /**

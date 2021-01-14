@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PasarController extends Controller
 {
+    public function allIndex()
+    {
+        $data = Pasar::all();
+        return response()->json($data);
+    }
 
     public function index()
     {

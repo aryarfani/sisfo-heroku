@@ -47,6 +47,7 @@ class InfoDesaController extends Controller
             'seksi_pemerintahan' => 'required',
             'nomor_bpd' => 'required',
             'nomor_pemdes' => 'required',
+            'nomor_admin_desa' => 'required',
         ]);
 
         if ($request->method() == "POST") {
@@ -68,6 +69,7 @@ class InfoDesaController extends Controller
             $info_desa->seksi_pelayanan = $request->seksi_pelayanan;
             $info_desa->nomor_pemdes = $request->nomor_pemdes;
             $info_desa->nomor_bpd = $request->nomor_bpd;
+            $info_desa->nomor_admin_desa = $request->nomor_admin_desa;
 
             $info_desa->save();
             return redirect('/info-desa');
@@ -119,6 +121,7 @@ class InfoDesaController extends Controller
             'seksi_pemerintahan' => 'required',
             'nomor_bpd' => 'required',
             'nomor_pemdes' => 'required',
+            'nomor_admin_desa' => 'required',
         ]);
 
         $info_desa = InfoDesa::first();
@@ -133,6 +136,7 @@ class InfoDesaController extends Controller
         $info_desa->seksi_pelayanan = $request->seksi_pelayanan;
         $info_desa->nomor_pemdes = $request->nomor_pemdes;
         $info_desa->nomor_bpd = $request->nomor_bpd;
+        $info_desa->nomor_admin_desa = $request->nomor_admin_desa;
 
         if (isset($request->gambar_kepala_desa)) {
             $directory = 'assets/images/home';

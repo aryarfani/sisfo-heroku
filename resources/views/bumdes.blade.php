@@ -1,5 +1,5 @@
 @extends('../layouts/master')
-
+@section('search', true)
 @section('content')
 <!-- ============================================================== -->
 <!-- Container fluid  -->
@@ -12,8 +12,8 @@
                 <th scope="col">No</th>
                 <th scope="col">Image</th>
                 <th scope="col">Name</th>
-                <th scope="col">Phone (Whatsapp)</th>
                 <th scope="col">Category</th>
+                <th scope="col">Phone (Whatsapp)</th>
                 <th scope="col">Create Date</th>
                 <th scope="col">Action</th>
             </tr>

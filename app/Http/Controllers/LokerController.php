@@ -4,14 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Loker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class LokerController extends Controller
 {
     public function index()
     {
+        $loker = Loker::query();
 
-        $data = Loker::paginate(15);
-        return view('loker', ['data' => $data]);
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('lokers');
+            foreach ($columns as $column) {
+                $loker->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+
+        return view('loker', ['data' => $loker->paginate(15)]);
     }
 
     public function destroy($id)

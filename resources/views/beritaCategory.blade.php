@@ -1,5 +1,5 @@
 @extends('../layouts/master')
-
+@section('search', true)
 @section('content')
 
 <!-- ============================================================== -->

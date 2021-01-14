@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BumdesCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class BumdesCategoryController extends Controller
 {
@@ -14,8 +15,19 @@ class BumdesCategoryController extends Controller
      */
     public function index()
     {
-        $bumdesCategory = BumdesCategory::paginate(15);
-        return view('bumdesCategory', ['bumdesCategory' => $bumdesCategory]);
+        $data = BumdesCategory::query();
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('bumdes_categories');
+            foreach ($columns as $column) {
+                $data->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+
+        return view('bumdesCategory', ['bumdesCategory' => $data->paginate(15)]);
     }
 
     /**

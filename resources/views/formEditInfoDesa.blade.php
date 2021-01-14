@@ -72,6 +72,11 @@
                         <label>Nomor BPD</label>
                         <input type="number" class="form-control" name="nomor_bpd" value="{{ $data->nomor_bpd }}">
                     </div>
+                    <div class="form-group">
+                        <label>Nomor Admin Desa</label>
+                        <input type="number" class="form-control" name="nomor_admin_desa" value="{{ $data->nomor_admin_desa }}">
+                    </div>
+
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\PotencyCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class PotencyCategoryController extends Controller
 {
@@ -14,8 +15,19 @@ class PotencyCategoryController extends Controller
      */
     public function index()
     {
-        $potencyCategory = PotencyCategory::paginate(15);
-        return view('potencyCategory', ['potencyCategory' => $potencyCategory]);
+        $data = PotencyCategory::query();
+        $search = request()->query('q');
+
+        // if qeury is not empty
+        if ($search != "") {
+            // take all column of model
+            $columns = Schema::getColumnListing('potency_category');
+            foreach ($columns as $column) {
+                $data->orWhere($column, 'LIKE', '%' . $search . '%');
+            }
+        }
+
+        return view('potencyCategory', ['potencyCategory' => $data->paginate(15)]);
     }
 
     /**
