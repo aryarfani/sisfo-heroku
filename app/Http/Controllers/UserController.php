@@ -210,4 +210,13 @@ class UserController extends Controller
 
         return redirect()->back()->with('status', 'File sukses di upload');
     }
+
+    // function to approve selling
+    public function approveSell($id)
+    {
+        $kegiatan = User::find($id);
+        $kegiatan->update(['can_sell' => 1]);
+
+        return redirect('/user')->with('status', 'Izin jualan telah diberikan');
+    }
 }

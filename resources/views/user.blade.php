@@ -9,6 +9,13 @@
     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
         Import User
     </button>
+
+    @if(session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <table class="table table-hover table-striped table-bordered">
         <thead class="table-info">
             <tr>
@@ -18,32 +25,41 @@
                 <th scope="col">Nama</th>
                 <th scope="col">No Handphone</th>
                 <th scope="col">Tanggal dibuat</th>
+                <th scope="col">Izin Jualan</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach($user as $key => $b )
-            <tr>
-                <th scope="row">{{ ($user->currentpage()-1) * $user->perpage() + $key + 1 }}</th>
-                <td><img src="{{ $b->gambar ?? 'assets\images\home\user-no-image.jpg' }}" class="img-fluid" style=" height: 70px"></td>
-                <td>{{ $b->nik }}</td>
-                <td>{{ $b->nama }}</td>
-                <td>{{ $b->nomer_hp }}</td>
-                <td>{{ $b->created_at }}</td>
+                <tr>
+                    <th scope="row">{{ ($user->currentpage()-1) * $user->perpage() + $key + 1 }}</th>
+                    <td><img src="{{ $b->gambar ?? 'assets\images\home\user-no-image.jpg' }}" class="img-fluid" style=" height: 70px"></td>
+                    <td>{{ $b->nik }}</td>
+                    <td>{{ $b->nama }}</td>
+                    <td>{{ $b->nomer_hp }}</td>
+                    <td>{{ $b->created_at }}</td>
+                    <td>
+                        @if($b->can_sell == "0")
+                            <span class="badge badge-info font-weight-bold">Tidak</span>
+                            <a href="{{ url('/user/'. $b["id"]).'/approve-sell' }}" type="button" class="btn btn-success">Beri izin</a>
 
-                <td class="d-flex ">
-                    <div class="mr-1">
-                        <a class=" btn btn-warning px-3" href="{{ url('/user', [$b->id]) }}" type="button">Edit</a>
-                    </div>
-                    <div class="ml-1">
-                        <form action="{{ url('/user', [$b->id]) }}" method="POST">
-                            <input class="btn btn-danger btn-block" type="submit" value="Delete">
-                            <input type="hidden" name="_method" value="delete" />
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        </form>
-                    </div>
-                </td>
-            </tr>
+                        @else
+                            <span class="font-weight-bold badge badge-success">Ya</span>
+                        @endif
+                    </td>
+                    <td class="d-flex ">
+                        <div class="mr-1">
+                            <a class=" btn btn-warning px-3" href="{{ url('/user', [$b->id]) }}" type="button">Edit</a>
+                        </div>
+                        <div class="ml-1">
+                            <form action="{{ url('/user', [$b->id]) }}" method="POST">
+                                <input class="btn btn-danger btn-block" type="submit" value="Delete">
+                                <input type="hidden" name="_method" value="delete" />
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            </form>
+                        </div>
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>
