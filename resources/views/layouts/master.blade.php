@@ -40,9 +40,31 @@
         up.form.config.submitSelectors.push(['form']) // up-submit all <form></form>
         up.fragment.config.runScripts = true
     </script>
+
+
 </head>
 
 <body>
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/admin/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/admin/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="/admin/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/admin/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/admin/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="/admin/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -314,25 +336,6 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="/admin/assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="/admin/assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="/admin/dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="/admin/dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="/admin/dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="/admin/assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
 </body>
 
 </html>
