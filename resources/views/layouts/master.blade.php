@@ -28,6 +28,7 @@
             bottom: 0;
             width: 100%;
         }
+
     </style>
 </head>
 
@@ -102,24 +103,24 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        @hasSection ('search')
-                        <li class="nav-item search-box">
-                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
-                                <div class="d-flex align-items-center">
-                                    <i class="mdi mdi-magnify font-20 mr-1"></i>
-                                    <div class="ml-1 d-none d-sm-block">
-                                        <span>{{ request()->get('q') ?? "Cari" }}</span>
+                        @hasSection('search')
+                            <li class="nav-item search-box">
+                                <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-magnify font-20 mr-1"></i>
+                                        <div class="ml-1 d-none d-sm-block">
+                                            <span>{{ request()->get('q') ?? 'Cari' }}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-
-                            <form class="app-search position-absolute" action="{{ '/'. Request::path() }}" method="GET">
-                                <input onfocus="this.value = this.value;" type="text" name="q" class="form-control" placeholder="Cari &amp; enter" value="{{ request()->get('q') ?? "" }}">
-                                <a class="srh-btn">
-                                    <i class="ti-close"></i>
                                 </a>
-                            </form>
-                        </li>
+
+                                <form class="app-search position-absolute" action="{{ '/' . Request::path() }}" method="GET">
+                                    <input onfocus="this.value = this.value;" type="text" name="q" class="form-control" placeholder="Cari &amp; enter" value="{{ request()->get('q') ?? '' }}">
+                                    <a class="srh-btn">
+                                        <i class="ti-close"></i>
+                                    </a>
+                                </form>
+                            </li>
                         @endif
                     </ul>
                     <!-- ============================================================== -->
@@ -134,8 +135,7 @@
                             <div class="dropdown-menu dropdown-menu-right user-dd animated text-black-50">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
                                     Profile</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="ti ti-close"></i>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="ti ti-close"></i>
                                     {{ __('Logout') }}
                                 </a>
 

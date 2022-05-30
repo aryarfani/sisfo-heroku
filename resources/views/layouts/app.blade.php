@@ -58,8 +58,8 @@
     <script src="/admin/assets/login/vendor/tilt/tilt.jquery.min.js"></script>
     <script>
         $('.js-tilt').tilt({
-        scale: 1.1
-    })
+            scale: 1.1
+        })
     </script>
     <!--===============================================================================================-->
     <script src="/admin/assets/login/js/main.js"></script>
