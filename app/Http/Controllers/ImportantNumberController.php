@@ -118,9 +118,8 @@ class ImportantNumberController extends Controller
      */
     public function destroy($id)
     {
-        $importantNumber = ImportantNumber::find($id);
-        $hapus = $importantNumber->delete();
-        if ($hapus) {
+        $importantNumber = ImportantNumber::destroy($id);
+        if ($importantNumber) {
             return redirect('/nomer-penting');
         }
     }

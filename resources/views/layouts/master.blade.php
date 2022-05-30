@@ -30,22 +30,32 @@
         }
 
     </style>
+
+    <script src="https://unpkg.com/unpoly@2.6.0/unpoly.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/unpoly@2.6.0/unpoly.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/unpoly@2.6.0/unpoly-bootstrap4.min.css">
+    <script>
+        up.link.config.followSelectors.push("a[href]"); // up-follow all <a></a>
+        up.link.config.preloadSelectors.push("a[href]"); // up-preload all <a></a>
+        up.form.config.submitSelectors.push(['form']) // up-submit all <form></form>
+        up.fragment.config.runScripts = true
+    </script>
 </head>
 
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    <div class="preloader">
+    {{-- <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
-    </div>
+    </div> --}}
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full" up-main>
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -295,6 +305,11 @@
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
+
+        {{-- * Put segment's script inside layout-root (up-main)
+             * so it can be loaded and executed when fragment shown
+             * --}}
+        @yield('javascript')
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
@@ -318,7 +333,6 @@
     <!--chartis chart-->
     <script src="/admin/assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    @yield('javascript')
 </body>
 
 </html>
