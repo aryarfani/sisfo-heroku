@@ -31,7 +31,6 @@ class PasarController extends Controller
             'nomer_hp' => 'required',
         ]);
 
-
         $directory = 'assets/images/home';
         $file = $request->file('gambar');
         $new_file_name = rand() . '.' . $file->getClientOriginalExtension();

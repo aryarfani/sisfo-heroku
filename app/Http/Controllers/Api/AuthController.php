@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-
     public function register(Request $request)
     {
         $this->validate($request, [
@@ -46,7 +45,6 @@ class AuthController extends Controller
         }
         $user->save();
 
-
         return response()->json($user);
     }
 
@@ -60,15 +58,18 @@ class AuthController extends Controller
 
         return $this->respondWithToken($token);
     }
+
     public function getAuthUser()
     {
         return response()->json(Auth::guard('user')->user());
     }
+
     public function logout()
     {
         Auth::guard('user')->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
+
     protected function respondWithToken($token)
     {
         return response()->json([

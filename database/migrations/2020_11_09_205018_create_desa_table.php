@@ -16,7 +16,7 @@ class CreateDesaTable extends Migration
         Schema::create('desa', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('alamat_kantor');
+            $table->string('alamat_kantor')->nullable();
             $table->timestamps();
         });
     }

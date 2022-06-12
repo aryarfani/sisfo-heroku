@@ -1,8 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
+/public/coverage
 /storage/*.key
 /vendor
+/assets/images/home
 .env
 .env.backup
 .phpunit.result.cache
