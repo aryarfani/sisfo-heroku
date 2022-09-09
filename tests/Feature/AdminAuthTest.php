@@ -12,7 +12,8 @@ class AdminAuthTest extends TestCase
     {
         $response = $this->get('register');
 
-        $response->assertStatus(200);
+        $response->assertSee('Register')
+            ->assertStatus(200);
     }
 
     public function testAdminCanRegisterAccount()

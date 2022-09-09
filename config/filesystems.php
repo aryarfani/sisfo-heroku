@@ -51,8 +51,17 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
+        ],
+
+        'idrive' => [
+            'driver' => 's3',
+            'key' => env('IDRIVE_ACCESS_KEY_ID'),
+            'secret' => env('IDRIVE_SECRET_ACCESS_KEY'),
+            'region' => env('IDRIVE_DEFAULT_REGION'),
+            'bucket' => env('IDRIVE_BUCKET'),
+            'endpoint' => env('IDRIVE_ENDPOINT'),
         ],
 
         's3' => [

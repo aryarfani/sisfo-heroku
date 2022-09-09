@@ -28,7 +28,6 @@
             bottom: 0;
             width: 100%;
         }
-
     </style>
 
     <script src="https://unpkg.com/unpoly@2.6.0/unpoly.min.js"></script>
@@ -39,6 +38,15 @@
         up.link.config.preloadSelectors.push("a[href]"); // up-preload all <a></a>
         up.form.config.submitSelectors.push(['form']) // up-submit all <form></form>
         up.fragment.config.runScripts = true
+        up.log.config.banner = false
+
+        // Handle http errors e.g: 'Unauthenticated.'
+        up.on('up:location:changed', (event) => {
+            console.log(event)
+            if (event.url == '/login') {
+                window.location.reload();
+            }
+        })
     </script>
 
 
